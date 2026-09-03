@@ -1,0 +1,879 @@
+<title>30万円からのチャート読本</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#E9ECF1; --surface:#FCFCFD; --surface-2:#F2F4F8;
+    --ink:#141922; --ink-2:#3D4654; --muted:#616B7A;
+    --rule:#D0D7E1; --rule-soft:#DFE4EC;
+    --ai:#1E3F73; --ai-2:#31629E; --ai-wash:#E2E9F4;
+    --shu:#B93D28; --shu-2:#C2402A; --shu-wash:#F6E4DF;
+    --sumi:#2A3340;
+    --yang:#C2402A; --yin:#1E3F73;
+    --c-a:#B93D28; --c-b:#1E3F73; --c-c:#4F7EA8; --c-d:#8B94A3;
+    --shadow:0 1px 2px rgba(20,25,34,.06), 0 8px 24px -14px rgba(20,25,34,.22);
+    --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",YuMincho,serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+    --mono:"Roboto Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1218; --surface:#161B23; --surface-2:#1C222B;
+      --ink:#E7EBF1; --ink-2:#C3CAD5; --muted:#98A2B1;
+      --rule:#2A3340; --rule-soft:#222A35;
+      --ai:#86ABDF; --ai-2:#9DBEEA; --ai-wash:#1A2434;
+      --shu:#E8785F; --shu-2:#EE8A73; --shu-wash:#2E1E1B;
+      --sumi:#C3CAD5;
+      --yang:#E8785F; --yin:#86ABDF;
+      --c-a:#E8785F; --c-b:#86ABDF; --c-c:#5E93BE; --c-d:#6C7788;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1218; --surface:#161B23; --surface-2:#1C222B;
+    --ink:#E7EBF1; --ink-2:#C3CAD5; --muted:#98A2B1;
+    --rule:#2A3340; --rule-soft:#222A35;
+    --ai:#86ABDF; --ai-2:#9DBEEA; --ai-wash:#1A2434;
+    --shu:#E8785F; --shu-2:#EE8A73; --shu-wash:#2E1E1B;
+    --sumi:#C3CAD5;
+    --yang:#E8785F; --yin:#86ABDF;
+    --c-a:#E8785F; --c-b:#86ABDF; --c-c:#5E93BE; --c-d:#6C7788;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1140px; margin:0 auto; padding:0 24px 96px}
+
+  /* ---------- masthead ---------- */
+  .mast{padding:64px 0 40px; border-bottom:2px solid var(--sumi)}
+  .mast .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 20px;
+  }
+  .mast h1{
+    font-family:var(--serif); font-weight:700; margin:0;
+    font-size:clamp(2.1rem,6.4vw,3.7rem); line-height:1.24;
+    letter-spacing:.02em; text-wrap:balance;
+  }
+  .mast h1 .sub{display:block; font-size:.44em; color:var(--muted); letter-spacing:.1em; margin-top:14px; font-weight:600}
+  .mast .lede{max-width:60ch; margin:26px 0 0; color:var(--ink-2); font-size:1.03rem}
+
+  /* ---------- layout ---------- */
+  .cols{display:block}
+  .toc{display:none; padding-top:44px}
+  @media (min-width:1000px){
+    .cols{display:grid; grid-template-columns:196px minmax(0,1fr); gap:56px; align-items:start}
+    .toc{display:block; position:sticky; top:24px}
+  }
+  .toc h2{font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; font-weight:500}
+  .toc ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px}
+  .toc a{
+    display:grid; grid-template-columns:1.6em 1fr; gap:8px; align-items:baseline;
+    text-decoration:none; color:var(--ink-2); font-size:.86rem; line-height:1.5;
+    padding:6px 8px; border-radius:3px; border-left:2px solid transparent;
+  }
+  .toc a span{font-family:var(--serif); color:var(--muted); font-size:.9em}
+  .toc a:hover{background:var(--surface); color:var(--ai); border-left-color:var(--ai)}
+
+  main{padding-top:44px; min-width:0}
+
+  /* ---------- chapters ---------- */
+  .ch{margin:0 0 76px; scroll-margin-top:24px}
+  .ch-head{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--rule); padding-bottom:12px; margin-bottom:28px}
+  .ch-num{
+    font-family:var(--serif); font-size:.78rem; letter-spacing:.16em; color:var(--shu);
+    white-space:nowrap; padding-top:4px;
+  }
+  .ch h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.5rem,3.6vw,2rem); margin:0; letter-spacing:.02em; text-wrap:balance}
+  h3{font-family:var(--serif); font-weight:600; font-size:1.16rem; margin:40px 0 12px; letter-spacing:.02em; color:var(--ink)}
+  h4{font-family:var(--sans); font-weight:700; font-size:.98rem; margin:26px 0 8px; color:var(--ink)}
+  p{margin:0 0 16px; max-width:66ch}
+  ul,ol{margin:0 0 18px; padding-left:1.3em; max-width:64ch}
+  li{margin-bottom:7px}
+  strong{font-weight:700; color:var(--ink)}
+  em{font-style:normal; background:linear-gradient(transparent 62%, var(--shu-wash) 62%); font-weight:700; padding:0 1px}
+  a{color:var(--ai-2)}
+  code{font-family:var(--mono); font-size:.86em; background:var(--surface-2); padding:2px 5px; border-radius:3px; color:var(--ink-2)}
+
+  /* ---------- callouts ---------- */
+  .note{
+    background:var(--surface); border-left:3px solid var(--ai);
+    padding:18px 22px; margin:0 0 22px; box-shadow:var(--shadow); border-radius:0 4px 4px 0;
+  }
+  .note.danger{border-left-color:var(--shu)}
+  .note .tag{
+    display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ai); margin-bottom:8px; font-weight:500;
+  }
+  .note.danger .tag{color:var(--shu)}
+  .note p:last-child{margin-bottom:0}
+  .note ul:last-child{margin-bottom:0}
+
+  blockquote{
+    margin:0 0 22px; padding:0 0 0 20px; border-left:2px solid var(--rule);
+    color:var(--muted); font-family:var(--serif); font-size:1.02rem; max-width:60ch;
+  }
+  blockquote p:last-child{margin-bottom:0}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto; margin:0 0 24px; -webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse; width:100%; min-width:440px; font-size:.9rem; background:var(--surface); box-shadow:var(--shadow)}
+  caption{
+    caption-side:top; text-align:left; font-family:var(--mono); font-size:10.5px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding:0 0 9px;
+  }
+  th,td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--rule-soft); vertical-align:top}
+  thead th{
+    background:var(--surface-2); font-size:.78rem; font-weight:700; letter-spacing:.04em;
+    color:var(--ink-2); border-bottom:1px solid var(--rule); white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+  .hit{color:var(--ai); font-weight:700}
+  .miss{color:var(--muted)}
+  tr.mark td{background:var(--ai-wash)}
+  tr.mark td:first-child{font-weight:700}
+
+  /* ---------- figures ---------- */
+  figure{margin:0 0 28px; background:var(--surface); padding:22px 20px 16px; box-shadow:var(--shadow); border-radius:4px}
+  figure svg{display:block; width:100%; height:auto}
+  figcaption{font-size:.82rem; color:var(--muted); margin-top:12px; line-height:1.6; border-top:1px solid var(--rule-soft); padding-top:10px}
+  .g-grid line{stroke:var(--rule); stroke-width:1}
+  .g-axis text{font-family:var(--mono); font-size:11px; fill:var(--muted)}
+  .g-line{fill:none; stroke-width:2.4; stroke-linejoin:round; stroke-linecap:round}
+  .g-end{font-family:var(--mono); font-size:12px; font-weight:500}
+  .g-target{stroke:var(--shu); stroke-width:1.4; stroke-dasharray:5 4}
+  .g-target-t{font-family:var(--mono); font-size:11px; fill:var(--shu); font-weight:500}
+  .anno{font-family:var(--sans); font-size:12px; fill:var(--muted)}
+  .anno-lead{stroke:var(--rule); stroke-width:1}
+
+  /* ---------- verdict / hero stat ---------- */
+  .verdict{
+    display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+    grid-template-columns:1fr; margin:0 0 28px; box-shadow:var(--shadow);
+  }
+  @media (min-width:620px){.verdict{grid-template-columns:1fr 1fr}}
+  .verdict > div{background:var(--surface); padding:22px 24px}
+  .verdict .k{font-size:.82rem; color:var(--muted); margin:0 0 6px}
+  .verdict .v{font-family:var(--mono); font-size:clamp(1.9rem,5.6vw,2.5rem); font-weight:500; line-height:1.1; color:var(--shu); font-variant-numeric:tabular-nums}
+  .verdict .n{font-size:.8rem; color:var(--muted); margin:8px 0 0; line-height:1.6}
+
+  /* ---------- boxes diagram ---------- */
+  .boxes{display:flex; flex-direction:column; gap:8px; margin:0 0 24px}
+  .box{background:var(--surface); box-shadow:var(--shadow); padding:16px 20px; border-left:4px solid var(--ai); border-radius:0 4px 4px 0}
+  .box:nth-child(1){border-left-color:var(--muted)}
+  .box:nth-child(2){border-left-color:var(--ai)}
+  .box:nth-child(3){border-left-color:var(--ai-2)}
+  .box:nth-child(4){border-left-color:var(--shu)}
+  .box .bt{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap}
+  .box b{font-family:var(--serif); font-size:1.02rem; letter-spacing:.02em}
+  .box .pct{font-family:var(--mono); font-size:.84rem; color:var(--muted); white-space:nowrap}
+  .box p{margin:4px 0 0; font-size:.88rem; color:var(--ink-2); max-width:none}
+
+  /* ---------- checklist ---------- */
+  .cl{background:var(--surface); box-shadow:var(--shadow); padding:8px 4px; margin:0 0 14px; border-radius:4px}
+  .cl-grp{padding:12px 18px 4px}
+  .cl-grp > .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--shu); display:block; margin-bottom:8px}
+  .cl label{display:flex; gap:11px; align-items:flex-start; padding:7px 0; cursor:pointer; font-size:.93rem; line-height:1.6}
+  .cl input{
+    appearance:none; -webkit-appearance:none; flex:0 0 auto; width:17px; height:17px; margin-top:5px;
+    border:1.5px solid var(--muted); border-radius:2px; background:var(--surface); cursor:pointer; position:relative;
+  }
+  .cl input:checked{background:var(--ai); border-color:var(--ai)}
+  .cl input:checked::after{
+    content:""; position:absolute; left:5px; top:1px; width:4px; height:9px;
+    border:solid var(--surface); border-width:0 2px 2px 0; transform:rotate(45deg);
+  }
+  .cl input:focus-visible{outline:2px solid var(--ai-2); outline-offset:2px}
+  .cl label:has(input:checked){color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule)}
+  .cl-foot{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:14px 18px; border-top:1px solid var(--rule-soft); margin-top:8px}
+  .cl-foot .st{font-family:var(--mono); font-size:.82rem; color:var(--muted); font-variant-numeric:tabular-nums}
+  .cl-foot .st.ok{color:var(--ai); font-weight:500}
+  .cl-foot button{
+    font-family:var(--sans); font-size:.82rem; color:var(--ink-2); background:var(--surface-2);
+    border:1px solid var(--rule); padding:6px 14px; border-radius:3px; cursor:pointer;
+  }
+  .cl-foot button:hover{background:var(--ai-wash); color:var(--ai); border-color:var(--ai)}
+  .cl-foot button:focus-visible{outline:2px solid var(--ai-2); outline-offset:2px}
+
+  /* ---------- closing ---------- */
+  .closing{border-top:2px solid var(--sumi); padding-top:36px; margin-top:12px}
+  .closing .pull{
+    font-family:var(--serif); font-size:clamp(1.2rem,3.2vw,1.55rem); line-height:1.9;
+    color:var(--ink); max-width:26ch; margin:0 0 26px; letter-spacing:.02em;
+  }
+  .fine{font-size:.82rem; color:var(--muted); line-height:1.85; max-width:70ch}
+  .fine li{margin-bottom:5px}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">TradingView 入門 ／ 5年の資金設計</p>
+  <h1>30万円からのチャート読本<span class="sub">むずかしい言葉を使わない、チャートとお金の教科書</span></h1>
+  <p class="lede">チャートの見方を、中学生でもわかる言葉で。そのうえで「30万円を5年で500万〜1000万円に」という目標を、電卓を叩いて正直に検証し、実際に届く道すじを引きます。</p>
+</header>
+
+<div class="cols">
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#ch0"><span>序</span>数字を直視する</a></li>
+      <li><a href="#ch1"><span>一</span>画面の見方</a></li>
+      <li><a href="#ch2"><span>二</span>ローソク足</a></li>
+      <li><a href="#ch3"><span>三</span>道具は3つ</a></li>
+      <li><a href="#ch4"><span>四</span>練習のしかた</a></li>
+      <li><a href="#ch5"><span>五</span>お金の設計図</a></li>
+      <li><a href="#ch6"><span>六</span>買う前の確認</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+  <!-- ═══════════ 序章 ═══════════ -->
+  <section class="ch" id="ch0">
+    <div class="ch-head"><span class="ch-num">序 章</span><h2>まず、数字を直視する</h2></div>
+
+    <p>チャートの勉強を始める前に、目標がどういう数字なのかを確かめます。ここを飛ばすと、勉強の方向がまるごとズレます。</p>
+
+    <div class="verdict">
+      <div>
+        <p class="k">30万円 → 500万円（5年・積立なし）</p>
+        <p class="v">+75.5<span style="font-size:.5em">%／年</span></p>
+        <p class="n">16.7倍。これを5年連続で。</p>
+      </div>
+      <div>
+        <p class="k">30万円 → 1000万円（5年・積立なし）</p>
+        <p class="v">+101.6<span style="font-size:.5em">%／年</span></p>
+        <p class="n">33.3倍。これを5年連続で。</p>
+      </div>
+    </div>
+
+    <p>比べる相手を並べます。銀行預金は年0.0〜0.2%。世界株のインデックスは長期平均で年5〜8%。60年以上勝ち続けたウォーレン・バフェットで、およそ年20%。史上最強といわれるファンドでさえ、手数料を引く前で年60〜70%台です。しかもそれは、巨大な組織と技術と資金があってのことです。</p>
+
+    <p><em>つまり「元手30万円だけで5年500万円」は、歴史上の誰よりうまくやる、という意味になります。</em></p>
+
+    <div class="note danger">
+      <span class="tag">損失は取り返すほうが重い</span>
+      <p>−10%の損は+11%で戻せます。でも−50%の損を戻すには<strong>+100%</strong>、−80%なら<strong>+400%</strong>が必要です。一発勝負を続けると、いつか必ず来る1回の大負けで終わります。</p>
+    </div>
+
+    <h3>目標は捨てない。届き方を変える</h3>
+    <p>資産は「①毎月いくら入れるか × ②何%で増やすか × ③どれだけ続けるか」で決まります。多くの人が②だけを追いかけますが、<strong>5年という短い期間では①の入金力が圧倒的に強い</strong>。実際の数字がこれです。</p>
+
+    <figure>
+      <svg viewBox="0 0 760 400" role="img" aria-label="初期30万円に毎月の積立を加えた場合の、5年間の資産推移グラフ。月10万円・年20%なら5年後1098万円、月5万円・年15%なら506万円、月5万円・年8%なら412万円、積立なし・年20%なら81万円。">
+        <g class="g-grid">
+          <line x1="58" y1="360" x2="628" y2="360"></line>
+          <line x1="58" y1="274.5" x2="628" y2="274.5"></line>
+          <line x1="58" y1="189" x2="628" y2="189"></line>
+          <line x1="58" y1="103.5" x2="628" y2="103.5"></line>
+          <line x1="58" y1="18" x2="628" y2="18"></line>
+        </g>
+        <g class="g-axis" text-anchor="end">
+          <text x="48" y="364">0</text>
+          <text x="48" y="278.5">300</text>
+          <text x="48" y="193">600</text>
+          <text x="48" y="107.5">900</text>
+          <text x="48" y="22">1200</text>
+        </g>
+        <g class="g-axis" text-anchor="middle">
+          <text x="58" y="382">0年</text>
+          <text x="172" y="382">1年</text>
+          <text x="286" y="382">2年</text>
+          <text x="400" y="382">3年</text>
+          <text x="514" y="382">4年</text>
+          <text x="628" y="382">5年</text>
+        </g>
+        <text class="g-axis" x="58" y="8" text-anchor="start" style="font-size:10px">万円</text>
+
+        <line class="g-target" x1="58" y1="217.5" x2="628" y2="217.5"></line>
+        <text class="g-target-t" x="62" y="212">目標 500万円</text>
+
+        <polyline class="g-line" stroke="var(--c-d)" points="58,351.4 172,349.6 286,347.3 400,344.5 514,341.1 628,336.9"></polyline>
+        <polyline class="g-line" stroke="var(--c-c)" points="58,351.4 172,333 286,313 400,291.4 514,267.9 628,242.6"></polyline>
+        <polyline class="g-line" stroke="var(--c-b)" points="58,351.4 172,331.7 286,308.9 400,282.3 514,251.5 628,215.8"></polyline>
+        <polyline class="g-line" stroke="var(--c-a)" points="58,351.4 172,312.1 286,264 400,205.5 514,134 628,46.9"></polyline>
+
+        <g class="g-end">
+          <text x="636" y="50.9" fill="var(--c-a)">1098万</text>
+          <text x="636" y="64" fill="var(--muted)" style="font-size:10.5px">月10万・年20%</text>
+          <text x="636" y="212" fill="var(--c-b)">506万</text>
+          <text x="636" y="225" fill="var(--muted)" style="font-size:10.5px">月5万・年15%</text>
+          <text x="636" y="252" fill="var(--c-c)">412万</text>
+          <text x="636" y="265" fill="var(--muted)" style="font-size:10.5px">月5万・年8%</text>
+          <text x="636" y="340.9" fill="var(--c-d)">81万</text>
+          <text x="636" y="354" fill="var(--muted)" style="font-size:10.5px">積立なし・年20%</text>
+        </g>
+      </svg>
+      <figcaption>初期資金30万円。毎月の積立と年利を変えたときの5年後。<strong>いちばん下の灰色の線が「積立ゼロ」</strong>——年20%という立派な成績でも、5年後は81万円で目標にまるで届きません。線を上に持ち上げているのは利回りではなく、毎月の入金です。</figcaption>
+    </figure>
+
+    <div class="note">
+      <span class="tag">この読本の結論</span>
+      <ul>
+        <li>第一目標を<strong>「5年で500万円」</strong>に置く（1000万円は10年でなら十分ねらえる）</li>
+        <li><strong>毎月5〜10万円の入金</strong>をつくることを最優先にする。ここが一番効く</li>
+        <li>手元の30万円は「増やす種銭」ではなく<strong>腕を上げるための授業料と道具代</strong></li>
+        <li>TradingViewは、その腕を上げるための<strong>練習場</strong>として使う</li>
+      </ul>
+    </div>
+
+    <blockquote><p>月5万円の積立は、年60万円を稼ぎ続けるのと同じ効果があります。30万円の元手で年60万円を稼ぐのは年利200%——不可能です。でも入金なら、確実にできます。</p></blockquote>
+  </section>
+
+  <!-- ═══════════ 一章 ═══════════ -->
+  <section class="ch" id="ch1">
+    <div class="ch-head"><span class="ch-num">第 一 章</span><h2>画面の見方</h2></div>
+
+    <p>TradingView（<a href="https://jp.tradingview.com/">jp.tradingview.com</a>）は、ひとことで言うと<strong>「株や為替の値段のグラフを見るための、世界一使われている道具」</strong>です。理科でグラフ用紙に折れ線を書きましたよね。あれの超高性能版だと思ってください。</p>
+
+    <div class="note">
+      <span class="tag">最初に知っておくこと</span>
+      <p>TradingViewは<strong>「見る・練習する」ための道具</strong>です。ここで直接、株を買うのがメインではありません。実際にお金を出して買うのは証券会社のアプリ（SBI証券・楽天証券など）です。</p>
+      <p style="margin-top:10px">たとえるなら、<strong>TradingView＝作戦を立てる部室のホワイトボード</strong>、<strong>証券会社のアプリ＝実際に試合に出るグラウンド</strong>。</p>
+    </div>
+
+    <h3>無料プランで十分です</h3>
+    <p>お金を払うのは「無料の制限が本当に邪魔だ」と自分の言葉で説明できるようになってからで、まったく遅くありません。無料だと日本株の値段が<strong>20分遅れ</strong>で表示されますが、勉強と練習には問題ありません。むしろ「今すぐ飛びつく」クセがつかなくて好都合です。</p>
+    <p class="fine">※プラン名・料金・機能の上限はよく変わります。必ず公式の料金ページで最新を確認してください。</p>
+
+    <h3>覚える場所は3つだけ</h3>
+    <div class="scroll">
+    <table>
+      <caption>チャート画面の構成</caption>
+      <thead><tr><th>場所</th><th>名前</th><th>そこで何をする</th></tr></thead>
+      <tbody>
+        <tr><td>上のバー</td><td>ツールバー</td><td>銘柄を選ぶ／時間足を変える／インジケーターを足す／アラート／保存</td></tr>
+        <tr><td>左のたて列</td><td>描画ツール</td><td>チャートに線を引く。<strong>使うのは2種類だけ</strong>（後述）</td></tr>
+        <tr><td>右のサイド</td><td>ウォッチリスト</td><td>気になる銘柄のお気に入り。<strong>毎日ここを見るのが習慣づくり</strong></td></tr>
+        <tr><td>まん中</td><td>チャート本体</td><td>ローソク足が並ぶ場所。右が価格、下が日付、下部の棒が出来高</td></tr>
+        <tr><td>下のパネル</td><td>スクリーナー／取引</td><td>銘柄の絞り込み、<strong>ペーパートレード（練習売買）</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>右サイドの<strong>チャット（他ユーザーの雑談）は見ないほうがいい</strong>です。人の意見に流される原因の第1位です。</p>
+
+    <h3>最初にやる設定（5分）</h3>
+    <ol>
+      <li>時間足を<strong>「1D（日足）」</strong>にする — 分足は情報が多すぎて混乱します</li>
+      <li>チャートタイプを<strong>ローソク足</strong>にする</li>
+      <li>ローソクの色を確認する（次章で詳しく）</li>
+      <li>ウォッチリストに<strong>5〜10銘柄だけ</strong>登録する — 多いと絶対に見なくなります</li>
+      <li>保存してレイアウトに名前をつける</li>
+    </ol>
+
+    <div class="scroll">
+    <table>
+      <caption>よく使うシンボルとショートカット</caption>
+      <thead><tr><th>シンボル</th><th>中身</th><th>キー</th><th>動作</th></tr></thead>
+      <tbody>
+        <tr><td><code>TSE:7203</code></td><td>トヨタ自動車（TSE＝東証）</td><td><code>Alt+T</code></td><td>トレンドライン（斜めの線）</td></tr>
+        <tr><td><code>NI225</code></td><td>日経平均株価</td><td><code>Alt+H</code></td><td>水平線</td></tr>
+        <tr><td><code>USDJPY</code></td><td>ドル／円</td><td><code>Ctrl+Z</code></td><td>元に戻す</td></tr>
+        <tr><td><code>SPX</code></td><td>米国S&amp;P500</td><td><code>,</code> <code>.</code></td><td>時間足の切り替え</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 二章 ═══════════ -->
+  <section class="ch" id="ch2">
+    <div class="ch-head"><span class="ch-num">第 二 章</span><h2>ローソク足を読む</h2></div>
+
+    <p>ローソク足1本は、<strong>ある期間のできごとを1本にまとめた記録</strong>です。日足なら1本＝1日、5分足なら1本＝5分。江戸時代の日本の米市場で生まれた記法で、いまも世界中で使われています。</p>
+
+    <figure>
+      <svg viewBox="0 0 720 300" role="img" aria-label="ローソク足の構造図。左が陽線（値上がり、赤）、右が陰線（値下がり、青）。それぞれ高値・安値・始値・終値・実体・ヒゲの位置を示している。">
+        <!-- 陽線 -->
+        <g>
+          <line x1="200" y1="40" x2="200" y2="90" stroke="var(--yang)" stroke-width="2.5"></line>
+          <rect x="176" y="90" width="48" height="120" fill="var(--yang)" rx="1"></rect>
+          <line x1="200" y1="210" x2="200" y2="256" stroke="var(--yang)" stroke-width="2.5"></line>
+          <text class="anno" x="200" y="285" text-anchor="middle" style="fill:var(--yang); font-weight:700">陽線（値上がり）</text>
+        </g>
+        <!-- 陰線 -->
+        <g>
+          <line x1="470" y1="40" x2="470" y2="76" stroke="var(--yin)" stroke-width="2.5"></line>
+          <rect x="446" y="76" width="48" height="134" fill="var(--yin)" rx="1"></rect>
+          <line x1="470" y1="210" x2="470" y2="256" stroke="var(--yin)" stroke-width="2.5"></line>
+          <text class="anno" x="470" y="285" text-anchor="middle" style="fill:var(--yin); font-weight:700">陰線（値下がり）</text>
+        </g>
+        <!-- 注記：陽線側（左） -->
+        <g>
+          <line class="anno-lead" x1="124" y1="40" x2="196" y2="40"></line>
+          <text class="anno" x="118" y="44" text-anchor="end">高値</text>
+          <line class="anno-lead" x1="124" y1="210" x2="172" y2="210"></line>
+          <text class="anno" x="118" y="214" text-anchor="end">始値</text>
+          <line class="anno-lead" x1="124" y1="90" x2="172" y2="90"></line>
+          <text class="anno" x="118" y="94" text-anchor="end">終値</text>
+          <line class="anno-lead" x1="124" y1="256" x2="196" y2="256"></line>
+          <text class="anno" x="118" y="260" text-anchor="end">安値</text>
+        </g>
+        <!-- 注記：陰線側（右） -->
+        <g>
+          <line class="anno-lead" x1="500" y1="76" x2="556" y2="76"></line>
+          <text class="anno" x="562" y="80">始値（陰線は上）</text>
+          <line class="anno-lead" x1="500" y1="210" x2="556" y2="210"></line>
+          <text class="anno" x="562" y="214">終値（陰線は下）</text>
+          <line class="anno-lead" x1="474" y1="150" x2="556" y2="150"></line>
+          <text class="anno" x="562" y="154">実体（じったい）</text>
+          <line class="anno-lead" x1="474" y1="245" x2="556" y2="245"></line>
+          <text class="anno" x="562" y="249">ヒゲ</text>
+        </g>
+      </svg>
+      <figcaption><strong>色は国とサイトで逆になります。</strong>日本の証券会社は「上がり＝赤／下がり＝青」、TradingViewの初期設定を含む世界標準は「上がり＝緑／下がり＝赤」。この図は日本式です。<strong>どちらが上がりか、必ず自分の画面で確認してから読んでください。</strong></figcaption>
+    </figure>
+
+    <h3>形が教えてくれること</h3>
+    <p>値段が動く理由はたった1つ。<strong>「買いたい人」と「売りたい人」の力くらべの結果</strong>です。ローソク1本の形は、そのケンカの経過を記録しています。</p>
+
+    <div class="scroll">
+    <table>
+      <caption>ローソクの形と、その意味</caption>
+      <thead><tr><th>形</th><th>起きたこと</th><th>読み方</th></tr></thead>
+      <tbody>
+        <tr><td>実体が長い陽線</td><td>買いたい人が圧勝した</td><td>勢いが強い</td></tr>
+        <tr><td><strong>下ヒゲが長い</strong></td><td>ぐっと下げられたが押し返した</td><td><strong>安いところで買いたい人がいる</strong></td></tr>
+        <tr><td><strong>上ヒゲが長い</strong></td><td>ぐっと上げたが押し戻された</td><td><strong>高いところで売りたい人がいる</strong></td></tr>
+        <tr><td>実体がほぼ無い（十字）</td><td>買いと売りが互角</td><td>迷い。折り返し地点で出やすい</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note">
+      <span class="tag">暗記しないでください</span>
+      <p>「長い下ヒゲ＝下で買われた」「長い上ヒゲ＝上で売られた」——この2つの<strong>理屈</strong>さえわかれば、あとは全部その応用です。形の名前を100個覚えても、勝てるようにはなりません。</p>
+    </div>
+
+    <h3>トレンド ── チャートで一番大事なこと</h3>
+    <p>値動きには3種類しかありません。判定はとても簡単で、<strong>「山」と「谷」の高さを比べるだけ</strong>です。</p>
+    <ul>
+      <li><strong>上昇トレンド</strong>：山も谷も、前より高い</li>
+      <li><strong>下降トレンド</strong>：山も谷も、前より低い</li>
+      <li><strong>レンジ</strong>：そのどちらでもない（横ばい）</li>
+    </ul>
+    <p>トレンドに逆らうのは、<strong>川の流れに逆らって泳ぐのと同じ</strong>です。できなくはないけれど、ものすごく疲れて、たいてい流されます。初心者のうちは「<strong>上昇トレンドのものを、一時的に下がったところで買う</strong>」。これだけを狙ってください。</p>
+
+    <div class="note danger">
+      <span class="tag">最も損する考え方</span>
+      <p>「安くなったから買う」。下降トレンド中の株は<strong>「安い」のではなく「もっと安くなる途中」</strong>であることが多いのです。</p>
+    </div>
+
+    <h3>支持線と抵抗線 ── 引く線は2本だけ</h3>
+    <p><strong>支持線（サポート）＝下で支える床。</strong>何度も下げ止まっている値段。<br><strong>抵抗線（レジスタンス）＝上でぶつかる天井。</strong>何度も上げ止まっている値段。</p>
+    <p>なぜ効くのか。たとえば1000円で何回も跳ね返っているとします。すると多くの人の頭にこう記憶されます——「1000円で買ったら儲かった」「1000円で売り損ねた」「1000円は底だ」。そして実際に1000円で買いが集まり、本当に止まる。<em>みんながそう思っているから、そうなる</em>のです。チャートは値段のグラフであると同時に、<strong>参加者の記憶と気持ちの地図</strong>です。</p>
+    <p>引くときは、細い線でピッタリ合わせようとせず<strong>長方形でゾーン（帯）として塗る</strong>ほうが実戦的です。そして<strong>線は3〜4本まで</strong>。線だらけのチャートは、どんな動きも「線に当たった」ことになり、意味を失います。</p>
+
+    <h3>出来高 ── 動きの「本気度」</h3>
+    <p>チャート下部の棒グラフです。<strong>値段＝どっちに動いたか。出来高＝何人で押したか。</strong>1人で押したドアと100人で押したドアでは、意味がまるで違います。</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>状況</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>値上がり ＋ <strong>出来高が多い</strong></td><td>本物の上昇の可能性が高い</td></tr>
+        <tr><td>値上がり ＋ 出来高が少ない</td><td>力が弱い。続かないかも</td></tr>
+        <tr><td>線をブレイク ＋ <strong>出来高が急増</strong></td><td>本物のブレイクの可能性が高い</td></tr>
+        <tr><td>線をブレイク ＋ 出来高は普通</td><td><strong>だまし</strong>の可能性が高い</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>時間足 ── 木を見て、森も見る</h3>
+    <p>プロは、<strong>週足で「森」を見て、日足で「木」を見ます</strong>。大原則は<strong>「長い時間足の流れに、短い時間足で逆らわない」</strong>。週足が下向きなのに5分足が上がっているから買う——これが一番やられるパターンです。初心者は<strong>日足</strong>を主戦場にしてください。</p>
+  </section>
+
+  <!-- ═══════════ 三章 ═══════════ -->
+  <section class="ch" id="ch3">
+    <div class="ch-head"><span class="ch-num">第 三 章</span><h2>道具は3つでいい</h2></div>
+
+    <blockquote><p>値段が「本体」で、インジケーターは「影」です。影をどれだけ増やしても、本体より先には動きません。</p></blockquote>
+
+    <p>インジケーターは<strong>値段を計算し直したもの</strong>で、新しい情報が出てくるわけではありません。だから「もっと良いインジケーターを探せば勝てる」は、一生見つからない探しものです。5個も6個も重ねると意見が食い違って動けなくなります（分析まひ）。</p>
+
+    <div class="note">
+      <span class="tag">この3つだけでいい</span>
+      <ul>
+        <li><strong>移動平均線 25日＋200日</strong> …… 流れ（トレンド）を見る</li>
+        <li><strong>出来高</strong> …… 本気度を見る</li>
+        <li><strong>RSI（14）</strong> …… 行き過ぎを見る</li>
+      </ul>
+      <p style="margin-top:10px"><strong>役割が3つとも違う</strong>のがポイントです。似た役割のものを並べても、同じことを3回言われるだけです。</p>
+    </div>
+
+    <h3>移動平均線 ── いちばん大事な1本</h3>
+    <p>「直近◯日間の値段の平均」を線でつないだものです。テストでたとえると、1回ごとの点数は上下しますが<strong>「直近5回の平均点」</strong>を見れば伸びているか落ちているかがハッキリわかる。あれと同じです。</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>見るところ</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>線が上を向いている</td><td>上昇トレンド</td></tr>
+        <tr><td>値段が線の<strong>上</strong>にある</td><td>買った人が平均的に勝っている＝強い</td></tr>
+        <tr class="mark"><td>値段が<strong>200日線の下</strong></td><td><strong>手を出さない。これを守るだけで大損の大半は防げます</strong></td></tr>
+        <tr><td>25日線まで下げて跳ね返った</td><td>押し目（買い場）の目安</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>ゴールデンクロス</strong>（短い線が長い線を下から上に抜く）は買いサインとして有名ですが、平均なので<strong>必ず遅れます</strong>。レンジ相場ではクロスを繰り返し、その全部が損になります。<strong>クロスだけで売買しないでください。</strong></p>
+
+    <h3>RSI ── 息切れメーター</h3>
+    <p>0〜100の数字で、70より上なら買われすぎ、30より下なら売られすぎ。ずっと全力疾走したらそろそろ息が切れるよね、を数字にしたものです。</p>
+    <div class="note danger">
+      <span class="tag">強いトレンド中は逆張り禁止</span>
+      <p>強い上昇相場では、RSIが70を超えたまま何週間も上がり続けます。「70超えたから売り」で入ると、上がり続ける株にひたすら負けます。<strong>RSIの逆張りは「レンジのときだけ」の道具です。</strong></p>
+    </div>
+    <p>むしろ強力なのが<strong>ダイバージェンス</strong>。値段は高値を更新したのに、RSIの山は前より低い——これは<strong>「車はまだ前に進んでいるが、アクセルは緩んでいる」</strong>状態です。止まるか、バックするかの前ぶれ。</p>
+
+    <h3>その他（知っておく程度でいい）</h3>
+    <ul>
+      <li><strong>MACD</strong>：2本の移動平均線の差。「ヒストグラムの棒が縮み始めた＝勢いが衰えた」が一番役に立ちます</li>
+      <li><strong>ボリンジャーバンド</strong>：値段の「いつもの範囲」の帯。<strong>反転の道具ではなく「静かか、荒れているか」を見る道具</strong>。強い相場では帯に沿って延々と上がります（バンドウォーク）</li>
+      <li><strong>一目均衡表</strong>：日本生まれ。初心者は<strong>「雲」だけ</strong>でOK。雲の上なら強い、雲の中なら手を出さない</li>
+    </ul>
+
+    <h3>判断の順番（テンプレート）</h3>
+    <ol>
+      <li>週足の流れは上向きか？ → 下向きなら見送り</li>
+      <li>日足で値段は200日線の上か？ → 下なら見送り</li>
+      <li>25日線や支持線まで押してきたか？ → 買い場の候補</li>
+      <li>そこで下ヒゲ／陽線が出たか？ 出来高は？ → 買いの手が入ったか確認</li>
+      <li>RSIが下がってから回復したか？ → 息を整えた証拠</li>
+    </ol>
+    <p><em>全部○のときだけ検討。1つでも×なら見送り。</em>見送りは負けではありません。バッターが悪い球を見送るのは、正しいプレーです。</p>
+  </section>
+
+  <!-- ═══════════ 四章 ═══════════ -->
+  <section class="ch" id="ch4">
+    <div class="ch-head"><span class="ch-num">第 四 章</span><h2>練習のしかた</h2></div>
+
+    <p>ルールを覚えただけの人がサッカーの試合で勝てないのと同じで、チャートの見方を覚えただけでは勝てません。<strong>練習量がすべてです。</strong>TradingViewには、お金を1円も使わずに練習できる機能が3つあります。</p>
+
+    <h3>① バーリプレイ ── 過去に巻き戻して勝負する</h3>
+    <p>チャートを過去のある日まで巻き戻し、そこから1本ずつ進める機能です。<strong>未来が隠されるので、当時のリアルな判断を追体験できます。</strong>ゲームでいう「セーブデータをロードしてやり直す」機能。本番と同じ状況を何百回でも繰り返せるのが最強なところです。</p>
+    <div class="note">
+      <span class="tag">1回の正しい手順</span>
+      <ol style="margin-bottom:0">
+        <li>ランダムな過去の日まで巻き戻す</li>
+        <li><strong>紙に書く</strong>：トレンドは？ 買う／売る／見送る？ 買うならいくらで買い、いくらで損切り、いくらで利確？ その理由を1〜2行</li>
+        <li>1本ずつ進めて結果を見る</li>
+        <li>勝ち負けと、なぜそうなったかを1行で書く</li>
+      </ol>
+    </div>
+    <p><strong>目標は50〜100回。</strong>これをやると「なんとなく上がりそう」が「25日線で下ヒゲ＋出来高増だから買い」に変わります。ただし——<strong>右にスクロールして未来を見ないこと</strong>、そして<strong>結果を知っている銘柄・年は避けること</strong>。</p>
+
+    <h3>② ペーパートレード ── 架空のお金で本番と同じ売買</h3>
+    <p>チャート下部の取引パネルから「Paper Trading」を選ぶと、架空資金でリアルタイムの売買練習ができます。<strong>架空資金は必ず30万円に設定してください。</strong>100万円でやると金銭感覚が本番とズレて、練習になりません。</p>
+    <div class="note">
+      <span class="tag">実弾に進む前の卒業条件</span>
+      <ul style="margin-bottom:0">
+        <li>3ヶ月以上つづけた</li>
+        <li>30回以上の売買を記録した</li>
+        <li>すべての売買で損切りラインを決めていた</li>
+        <li>トータルでプラスになっている</li>
+        <li><strong>ルールを破った回が1回もない</strong>（勝敗より、これが重要）</li>
+      </ul>
+    </div>
+
+    <h3>③ アラート ── 画面に張り付かない技術</h3>
+    <p><strong>チャートを一日中見ていると、必ず負けます。</strong>理由は単純で、見ていると「何かしたくなる」から。これを<strong>ポジポジ病</strong>といい、初心者が資金を溶かす最大の原因です。</p>
+    <p>引いた支持線・抵抗線にアラートを置けば、その値段が来るまでチャートを閉じていられます。これは分析の道具というより<strong>メンタル管理の道具</strong>です。おすすめは「<strong>1日1回、決まった時間に15分だけ見る</strong>」。あとはアラート任せ。</p>
+
+    <h3>そして、売買記録ノート</h3>
+    <p><strong>これをやる人は、ほぼ確実に上達します。やらない人は5年経っても同じ失敗を繰り返します。</strong>上手くなるとは「同じ失敗をしなくなる」こと。記録がなければ、自分が何を間違えたのか永久にわかりません。</p>
+    <div class="scroll">
+    <table>
+      <caption>記録する項目</caption>
+      <thead><tr><th>項目</th><th>記入例</th></tr></thead>
+      <tbody>
+        <tr><td>銘柄／買値／損切り／利確目標</td><td class="num">7203 ／ 2,850 ／ 2,760 ／ 3,030</td></tr>
+        <tr><td>リスク：リワード</td><td class="num">90円損 : 180円益 ＝ 1:2</td></tr>
+        <tr><td>買った理由（1行）</td><td>上昇トレンド中、25日線で下ヒゲ＋出来高増</td></tr>
+        <tr class="mark"><td><strong>ルールを守れたか</strong></td><td>○／×　←　<strong>これが最重要</strong></td></tr>
+        <tr><td>次に直すこと（1つだけ）</td><td>焦って1日早く入った。次は確定を待つ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <blockquote><p>勝った負けたより「ルールを守れたか」を評価してください。ルールを破って勝った回は、将来の大損の練習をしているのと同じです。</p></blockquote>
+
+    <h3>90日の練習メニュー</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>時期</th><th>やること</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1〜2週目</td><td>画面に慣れる。日足で10銘柄を毎日眺める。線を引く練習</td></tr>
+        <tr><td class="num">3〜4週目</td><td>インジケーター3つを設定。トレンド判定を毎日ノートに書く</td></tr>
+        <tr><td class="num">2ヶ月目</td><td><strong>バーリプレイ50回。</strong>全部ノートに記録</td></tr>
+        <tr><td class="num">3ヶ月目</td><td><strong>ペーパートレード開始。</strong>架空資金30万円。ルールを文章にする</td></tr>
+        <tr class="mark"><td class="num">4ヶ月目〜</td><td>ペーパートレードを3ヶ月継続。卒業条件をクリアしたら、<strong>少額で</strong>実弾へ</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>この6ヶ月を飛ばして本番に行った人は、ほぼ全員が資金を減らします。逆に、やり切った人は上位10%です。</p>
+  </section>
+
+  <!-- ═══════════ 五章 ═══════════ -->
+  <section class="ch" id="ch5">
+    <div class="ch-head"><span class="ch-num">第 五 章</span><h2>お金の設計図</h2></div>
+
+    <p>ここはチャートではなく、お金の配り方の話です。実は、こちらのほうが結果に効きます。</p>
+
+    <h3>ステップ1：入金力をつくる（★最優先★）</h3>
+    <p>チャートの勉強より先に、これをやってください。効果が10倍違います。</p>
+    <div class="scroll">
+    <table>
+      <caption>月5万円をつくる</caption>
+      <thead><tr><th>方法</th><th class="num">目安／月</th></tr></thead>
+      <tbody>
+        <tr><td>固定費の見直し（スマホ・保険・サブスク・家賃）</td><td class="num">1〜3万円</td></tr>
+        <tr><td>副業（スキル販売・アルバイト・受託）</td><td class="num">2〜10万円</td></tr>
+        <tr><td>昇給・転職</td><td class="num">2〜10万円</td></tr>
+        <tr><td>使途不明金の把握（家計簿アプリ）</td><td class="num">1〜2万円</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>ステップ2：お金を4つの箱に分ける</h3>
+    <p><strong>30万円を全部トレードに使ってはいけません。</strong></p>
+    <div class="boxes">
+      <div class="box">
+        <div class="bt"><b>箱0　生活防衛資金</b><span class="pct">投資の外</span></div>
+        <p>生活費の6ヶ月分。これが無いなら、投資はまだ早いです。</p>
+      </div>
+      <div class="box">
+        <div class="bt"><b>箱1　土台（コア）</b><span class="pct">70〜80%</span></div>
+        <p>インデックス投資信託を、NISAで毎月自動積立。何も考えない、売らない、チャートも見ない。<strong>これがあなたの資産の8割をつくります。</strong></p>
+      </div>
+      <div class="box">
+        <div class="bt"><b>箱2　練習・成長（サテライト）</b><span class="pct">10〜20%</span></div>
+        <p>個別株。TradingViewの分析を実践する場所。うまくなったら割合を増やせばいい。</p>
+      </div>
+      <div class="box">
+        <div class="bt"><b>箱3　実験</b><span class="pct">0〜10%</span></div>
+        <p>高リスクなもの。<strong>全部消えても平気な額だけ。</strong>無くてもかまいません。</p>
+      </div>
+    </div>
+    <p>この配分なら、箱2で全部失っても資産全体は−20%で済みます。<strong>再起できる</strong>ということです。</p>
+
+    <h3>ステップ3：NISAで税金をゼロにする</h3>
+    <p>利益には<strong>20.315%の税金</strong>がかかります。100万円儲けたら約20万円取られる。<strong>NISA口座なら、これがゼロ</strong>です。新NISA（2024年〜）は、つみたて投資枠が年120万円、成長投資枠が年240万円、生涯で1800万円まで、非課税期間は無期限。</p>
+    <p><strong>箱1の積立は、必ずNISAのつみたて投資枠で。</strong>これは「勉強も判断も不要で、確実に手取りが約20%改善する」唯一の方法です。<span class="fine">※制度は変わります。必ず金融庁や証券会社の公式ページで最新を確認してください。iDeCoは節税効果が大きいものの60歳まで引き出せないので、5年目標の資金には使えません。</span></p>
+
+    <h3>ステップ4：箱2のリスク管理（★鉄則★）</h3>
+
+    <div class="note danger">
+      <span class="tag">2%ルール</span>
+      <p><strong>1回の売買で失っていいのは、その資金の2%まで。</strong>箱2が6万円なら、1回の最大損失は<strong>1,200円</strong>です。「少なすぎる」と思うでしょう。でもそれが正しい。2%ずつなら<strong>10連敗しても資金は約82%残ります</strong>。20%ずつ賭けたら5連敗で退場です。そして連敗は必ず来ます。</p>
+    </div>
+
+    <p>買う株数は、勘ではなく計算で決めます。順番は必ずこうです。</p>
+    <ol>
+      <li>チャートを見て「ここを割ったら自分の判断は間違い」という値段を決める（＝損切りライン）</li>
+      <li>買値 − 損切りライン ＝ 1株あたりの損失額</li>
+      <li><strong>買える株数 ＝（資金 × 2%）÷ 1株あたりの損失額</strong></li>
+    </ol>
+
+    <div class="scroll">
+    <table>
+      <caption>資金30万円・許容損失6,000円のときの計算例</caption>
+      <thead><tr><th class="num">買値</th><th class="num">損切り</th><th class="num">1株の損</th><th class="num">買える株数</th></tr></thead>
+      <tbody>
+        <tr><td class="num">2,850円</td><td class="num">2,760円</td><td class="num">90円</td><td class="num hit">66株</td></tr>
+        <tr><td class="num">1,500円</td><td class="num">1,425円</td><td class="num">75円</td><td class="num hit">80株</td></tr>
+        <tr><td class="num">5,000円</td><td class="num">4,700円</td><td class="num">300円</td><td class="num hit">20株</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine">※日本株は原則100株単位なので、この株数では買えません。<strong>単元未満株サービス</strong>（SBI証券のS株、楽天証券のかぶミニ、マネックスのワン株など。1株から買える）か<strong>米国株</strong>（1株から買える）を使うのが現実的です。</p>
+
+    <h4>リスクとリターンの比は 1:2 以上</h4>
+    <p>「90円損する可能性を取るなら、180円以上の利益が狙えること」。なぜこれが効くのか、期待値の表を見てください。</p>
+    <div class="scroll">
+    <table>
+      <caption>1回あたりの期待値（リスク1個分＝1R）</caption>
+      <thead><tr><th>比率</th><th class="num">勝率30%</th><th class="num">勝率40%</th><th class="num">勝率50%</th><th class="num">勝率60%</th></tr></thead>
+      <tbody>
+        <tr><td>1:1</td><td class="num miss">−0.40</td><td class="num miss">−0.20</td><td class="num miss">±0.00</td><td class="num">+0.20</td></tr>
+        <tr class="mark"><td>1:2</td><td class="num miss">−0.10</td><td class="num hit">+0.20</td><td class="num hit">+0.50</td><td class="num hit">+0.80</td></tr>
+        <tr class="mark"><td>1:3</td><td class="num hit">+0.20</td><td class="num hit">+0.60</td><td class="num hit">+1.00</td><td class="num hit">+1.40</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><em>1:3なら、勝率30%でもプラスになります。</em>10回中7回負けても資産は増える。これが初心者と経験者の一番大きな差です。初心者は「当てること」を目指し、経験者は<strong>「負けを小さく、勝ちを大きく」</strong>を目指します。<strong>勝率を上げようとしないでください。比率を守ってください。</strong></p>
+
+    <h4>損切りは絶対にずらさない</h4>
+    <p>損切りラインに来たら、理由を考えずに切る。「もう少し待てば戻るかも」で損切りをずらす——これで人は退場します。<strong>損切りは失敗ではなく、保険料です。</strong>火災保険を払って火事が起きなかったからといって、損したとは思わないですよね。</p>
+
+    <div class="note danger">
+      <span class="tag">やらないことリスト</span>
+      <ul style="margin-bottom:0">
+        <li><strong>信用取引・レバレッジ</strong>（最初の2年は絶対禁止。借金で投資するのと同じ）</li>
+        <li>FXの高レバレッジ、仮想通貨への集中投資</li>
+        <li>SNSや動画の「この銘柄が来る」を、自分で確認せずに買う</li>
+        <li>損を取り返そうと、いつもの倍のサイズで入る（<strong>リベンジトレード</strong>。破滅の直行便）</li>
+        <li>「絶対儲かる」「元本保証で高利回り」「あなただけに教えます」<strong>——100%詐欺です。例外はありません</strong></li>
+      </ul>
+    </div>
+
+    <h3>5年のロードマップ</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>時期</th><th>やること</th><th class="num">目標残高</th></tr></thead>
+      <tbody>
+        <tr><td class="num">0〜6ヶ月</td><td>生活防衛資金の確保／<strong>入金力を月5万円に</strong>／NISA積立開始／リプレイとペーパートレード</td><td class="num miss">実弾はまだ</td></tr>
+        <tr><td class="num">6〜12ヶ月</td><td>箱2で少額の実弾スタート（1回の損失は2%以下）／記録ノート継続</td><td class="num">約100万</td></tr>
+        <tr><td class="num">1〜2年目</td><td>ルールの改善。入金額を増やす努力を継続</td><td class="num">約180万</td></tr>
+        <tr><td class="num">2〜3年目</td><td>箱2の成績が安定していれば比率を少し上げる（20%→25%）</td><td class="num">約270万</td></tr>
+        <tr><td class="num">3〜4年目</td><td>暴落が来ても<strong>積立を止めない</strong>。むしろチャンス</td><td class="num">約380万</td></tr>
+        <tr class="mark"><td class="num">5年目</td><td><strong>500万円到達。</strong>次の5年で1000〜1500万円へ</td><td class="num hit">約500万</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>6年目からが本番 ── 複利は後半で効く</h3>
+    <div class="scroll">
+    <table>
+      <caption>同じことを10年続けたら</caption>
+      <thead><tr><th>プラン</th><th class="num">5年後</th><th class="num">10年後</th></tr></thead>
+      <tbody>
+        <tr><td>月5万・年8%</td><td class="num">412万</td><td class="num hit">981万</td></tr>
+        <tr><td>月5万・年12%</td><td class="num">463万</td><td class="num hit">1,249万</td></tr>
+        <tr><td>月7万・年10%</td><td class="num">591万</td><td class="num hit">1,515万</td></tr>
+        <tr><td>月10万・年12%</td><td class="num">871万</td><td class="num hit">2,399万</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>月5万円を年8%で回すだけで、10年後に約1000万円。</strong>派手さはありませんが、再現性があります。5年で無理やり1000万を狙って0円になるより、10年で確実に1000万をつくるほうが、圧倒的に賢い。</p>
+
+    <h3>必ず起きること（先に知っておく）</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>出来事</th><th>正しい対応</th></tr></thead>
+      <tbody>
+        <tr><td>−20%以上の暴落（数年に1度は来る）</td><td><strong>積立を止めない。安く買えるボーナス。</strong>売らない</td></tr>
+        <tr><td>数ヶ月まったく増えない時期</td><td>普通です。複利は後半で効きます</td></tr>
+        <tr><td>5〜10連敗</td><td>2%ルールを守っていれば死にません。<strong>サイズを上げない</strong></td></tr>
+        <tr><td>「もっと儲かる方法」の誘惑</td><td>ほぼ全部が罠。<strong>退屈な戦略ほど生き残ります</strong></td></tr>
+        <tr><td>周りが大儲けした話</td><td>損した人の話は表に出ないだけ。<strong>比較しない</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 六章 ═══════════ -->
+  <section class="ch" id="ch6">
+    <div class="ch-head"><span class="ch-num">第 六 章</span><h2>買う前の確認</h2></div>
+
+    <p>人間の脳は投資に向いていません。上がっていると乗り遅れる気がして焦り、下がると怖くなって底で売り、損を認めたくなくて損切りをずらす。<strong>ルールとは、冷静なときの自分が、興奮している自分に出す命令書です。</strong></p>
+    <p>買う前に、必ずこれを通してください。<strong>1つでもチェックが付かなければ、買わない。</strong>「買わない」は最強の一手です。機会は毎日ありますが、資金は一度失うと戻りません。</p>
+
+    <div class="cl">
+      <div class="cl-grp">
+        <span class="lbl">環境 ── 流れに乗っているか</span>
+        <label><input type="checkbox"><span>週足の流れは上向きだ</span></label>
+        <label><input type="checkbox"><span>日足で、株価は200日移動平均線の<strong>上</strong>にいる</span></label>
+      </div>
+      <div class="cl-grp">
+        <span class="lbl">場所 ── なぜここなのか</span>
+        <label><input type="checkbox"><span>買う理由を「◯◯だから買う」と1行で言える</span></label>
+        <label><input type="checkbox"><span>高値に飛びついていない（追いかけ買いではない）</span></label>
+        <label><input type="checkbox"><span>25日線または支持線まで押してきたところだ</span></label>
+      </div>
+      <div class="cl-grp">
+        <span class="lbl">お金 ── 計算してから買う</span>
+        <label><input type="checkbox"><span>損切りの値段を決めた（買った直後に逆指値を入れる）</span></label>
+        <label><input type="checkbox"><span>株数＝（資金×2%）÷1株あたりの損失額 で計算した</span></label>
+        <label><input type="checkbox"><span>利確の目標を決めた</span></label>
+        <label><input type="checkbox"><span>リスク：リワードが <strong>1:2以上</strong>ある</span></label>
+      </div>
+      <div class="cl-grp">
+        <span class="lbl">心 ── いちばん見落とすところ</span>
+        <label><input type="checkbox"><span>焦っていない（「今すぐ買わないと」は危険信号）</span></label>
+        <label><input type="checkbox"><span>損を取り返そうとしていない</span></label>
+        <label><input type="checkbox"><span>全部失っても生活に困らない金額だ</span></label>
+      </div>
+      <div class="cl-foot">
+        <span class="st" id="clStatus">0 / 12 — まだ買わない</span>
+        <button type="button" id="clReset">チェックをリセット</button>
+      </div>
+    </div>
+    <p class="fine">※このチェック状態はあなたのブラウザにだけ保存されます。次に開いたときも残ります。</p>
+
+    <h3>月に1回、30分の振り返り</h3>
+    <p>評価する順番は、①<strong>ルールを守れたか</strong>　②リスク管理ができていたか　③損益、です。<strong>ルール違反ゼロで負けた月は、良い月。ルール違反して勝った月は、悪い月です。</strong></p>
+
+    <h3>上達の段階 ── 今どこにいるか</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>段階</th><th>状態</th><th>やること</th></tr></thead>
+      <tbody>
+        <tr><td class="num">Lv.1</td><td>用語はわかるが判断できない</td><td>毎日チャートを見る。線を引く</td></tr>
+        <tr class="mark"><td class="num">Lv.2</td><td>判断はできるが、その通りに動けない</td><td><strong>リプレイ100回。</strong>ペーパートレード</td></tr>
+        <tr><td class="num">Lv.3</td><td>ルール通りに動ける</td><td>少額の実弾。記録を続ける</td></tr>
+        <tr><td class="num">Lv.4</td><td>数ヶ月単位でプラスを維持できる</td><td>サイズを少しずつ上げる</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>ほとんどの人はLv.2で実弾に行って退場します。</strong>Lv.3に達してから、お金を入れてください。</p>
+  </section>
+
+  <!-- ═══════════ 結び ═══════════ -->
+  <section class="closing">
+    <p class="pull">早く増やそうとすると、必ず失う。<br>ゆっくり増やそうとすると、意外と早く増える。</p>
+    <p>30万円を守りながら、入金を続け、腕を磨いてください。5年後にあなたが持っているべき本当の資産は、500万円という数字よりも、<strong>「一貫してルール通りに動ける自分」</strong>です。その自分がいれば、そこから先の1000万も2000万も、時間の問題になります。</p>
+    <ul class="fine" style="margin-top:28px; padding-left:1.2em">
+      <li>これは勉強用のノートであり、投資助言ではありません。最終的な判断は必ずご自身で行ってください。</li>
+      <li>投資にはお金が減るリスクがあります。<strong>なくなっても生活が壊れないお金</strong>だけを使ってください。</li>
+      <li>本文の金額はすべて手数料と税金を考慮しない単純計算です。実際の成績はこれより低くなります。年8〜20%という利回りも保証されたものではなく、マイナスの年も当然あります。</li>
+      <li>NISA等の制度、および各サービスの料金・機能は変わります。必ず公式サイトで最新をご確認ください。</li>
+    </ul>
+  </section>
+
+  </main>
+</div>
+</div>
+
+<script>
+(function(){
+  var KEY="chart-dokuhon-checklist-v1";
+  var boxes=Array.prototype.slice.call(document.querySelectorAll(".cl input[type=checkbox]"));
+  var status=document.getElementById("clStatus");
+  var reset=document.getElementById("clReset");
+
+  function render(){
+    var n=boxes.filter(function(b){return b.checked;}).length;
+    var all=n===boxes.length;
+    status.textContent=n+" / "+boxes.length+" — "+(all?"全部そろった。検討してよい":"まだ買わない");
+    status.classList.toggle("ok",all);
+  }
+  function save(){
+    try{
+      localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));
+    }catch(e){}
+  }
+  try{
+    var raw=localStorage.getItem(KEY);
+    if(raw){
+      var saved=JSON.parse(raw);
+      if(Array.isArray(saved)){
+        boxes.forEach(function(b,i){ b.checked=!!saved[i]; });
+      }
+    }
+  }catch(e){}
+
+  boxes.forEach(function(b){ b.addEventListener("change",function(){ render(); save(); }); });
+  reset.addEventListener("click",function(){
+    boxes.forEach(function(b){ b.checked=false; });
+    render(); save();
+  });
+  render();
+})();
+</script>
