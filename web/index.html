@@ -210,6 +210,22 @@
   .fine{font-size:.82rem; color:var(--muted); line-height:1.85; max-width:70ch}
   .fine li{margin-bottom:5px}
 
+  /* ---------- glossary ---------- */
+  .gloss{display:flex; flex-direction:column; gap:0; margin:0 0 30px; border-top:1px solid var(--rule)}
+  .term{display:grid; grid-template-columns:1fr; gap:2px 22px; padding:16px 2px; border-bottom:1px solid var(--rule-soft)}
+  @media (min-width:680px){.term{grid-template-columns:200px minmax(0,1fr)}}
+  .term dt{font-family:var(--serif); font-weight:600; font-size:1.04rem; letter-spacing:.02em; color:var(--ink); line-height:1.55}
+  .term dt .en{display:block; font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; color:var(--muted); font-weight:400; margin-top:2px; text-transform:uppercase}
+  .term dd{margin:0; color:var(--ink-2); font-size:.94rem}
+  .term dd p{margin:0 0 8px; max-width:60ch}
+  .term dd p:last-child{margin-bottom:0}
+  .term dd .ex{display:block; font-size:.86rem; color:var(--muted); margin-top:6px; padding-left:12px; border-left:2px solid var(--rule)}
+  .term.warn dt{color:var(--shu)}
+  .term.warn{background:var(--shu-wash)}
+  .term.key dt{color:var(--ai)}
+  .gloss-sec{font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:38px 0 10px; padding-bottom:0}
+  .gloss-sec:first-of-type{margin-top:0}
+
   @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
 </style>
 
@@ -233,6 +249,7 @@
       <li><a href="#ch4"><span>四</span>練習のしかた</a></li>
       <li><a href="#ch5"><span>五</span>お金の設計図</a></li>
       <li><a href="#ch6"><span>六</span>買う前の確認</a></li>
+      <li><a href="#ch7"><span>七</span>用語辞典</a></li>
     </ol>
   </nav>
 
@@ -905,6 +922,346 @@
     </table>
     </div>
     <p><strong>ほとんどの人はLv.2で実弾に行って退場します。</strong>Lv.3に達してから、お金を入れてください。</p>
+  </section>
+
+  <!-- ═══════════ 七章 ═══════════ -->
+  <section class="ch" id="ch7">
+    <div class="ch-head"><span class="ch-num">第 七 章</span><h2>用語辞典</h2></div>
+
+    <p>投資の本が読めないのは、頭が悪いからではなく<strong>言葉を知らないだけ</strong>です。ここを1回通れば、たいていの本と動画が読めるようになります。最初から順に読む必要はありません。わからない言葉が出たら、ここに戻ってきてください。</p>
+
+    <p class="gloss-sec">A ── お金の増え方</p>
+    <dl class="gloss">
+      <div class="term key">
+        <dt>複利<span class="en">compound interest</span></dt>
+        <dd>
+          <p><strong>利益が、次の利益を生むこと。</strong>雪だるまを転がすと、大きくなるほど雪がつくスピードも上がる——あれです。単利は元の30万円にだけ利息がつき、複利は増えた分にも利息がつきます。</p>
+          <p><span class="ex">30万円を年10%で運用：5年後は単利45万／複利48万で差は3万円。でも30年後は<strong>単利120万／複利523万</strong>。最初の数年はほとんど差がないのに、後半で爆発します。だから「早く始めて、途中でやめない」が最強なのです。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>72の法則</dt>
+        <dd><p><strong>72 ÷ 年利（%）＝ お金が2倍になる年数。</strong>暗算用の便利ワザ。年8%なら9年、年10%なら7.2年、年5%なら14.4年で2倍になります。</p></dd>
+      </div>
+      <div class="term">
+        <dt>利回り</dt>
+        <dd><p>1年でお金が何%増えたか。30万円が33万円になったら利回り10%。</p></dd>
+      </div>
+      <div class="term">
+        <dt>元本</dt>
+        <dd><p>自分が出したお金そのもの。利益を含まない、投入した現金のこと。<strong>元本割れ</strong>＝出したお金より減ってしまうこと。</p></dd>
+      </div>
+      <div class="term">
+        <dt>インフレ</dt>
+        <dd>
+          <p>モノの値段が上がり、<strong>お金の価値が下がる</strong>こと。100円だったジュースが120円になったら、あなたの100円玉はジュース1本も買えなくなった＝価値が下がった、ということです。</p>
+          <p><span class="ex">年2%のインフレが続くと、現金は毎年2%ずつ価値が減ります。<strong>「投資しない＝安全」ではありません。</strong>現金で持つことも、それ自体がひとつの賭けです。</span></p>
+        </dd>
+      </div>
+    </dl>
+
+    <p class="gloss-sec">B ── 何を買うのか</p>
+    <dl class="gloss">
+      <div class="term">
+        <dt>株式</dt>
+        <dd><p><strong>会社のオーナー権を、小さく切り分けたもの。</strong>1株買えば、あなたはその会社のほんの一部の持ち主です。会社が儲かれば株価が上がり、配当（利益のおすそわけ）がもらえることもあります。</p></dd>
+      </div>
+      <div class="term key">
+        <dt>インデックス<span class="en">index</span></dt>
+        <dd>
+          <p><strong>市場全体の平均点。</strong>日経平均株価は日本の代表225社の平均、S&amp;P500は米国の代表500社の平均、全世界株インデックスは世界中の約3,000社の平均です。</p>
+        </dd>
+      </div>
+      <div class="term key">
+        <dt>インデックス投資</dt>
+        <dd>
+          <p><strong>その平均点を、そのまま買うこと。</strong>「どの会社が伸びるか」を当てにいかず、全部を少しずつ買って市場全体の成長をもらうやり方です。</p>
+          <p><span class="ex">クラスで一番になる生徒を当てるのは難しい。でも<strong>クラスの平均点</strong>なら、そこそこ安定して読めます。それを買うイメージ。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>投資信託</dt>
+        <dd><p><strong>みんなからお金を集めて、まとめて運用してくれる箱。</strong>1万円しかなくても、その箱を買えば中身の何百社にまとめて投資できます。値段（基準価額）は1日1回だけ決まります。</p></dd>
+      </div>
+      <div class="term">
+        <dt>ETF<span class="en">上場投資信託</span></dt>
+        <dd><p>投資信託を、<strong>株と同じように市場で売り買いできるようにしたもの。</strong>投資信託が「1日1回の値段」なのに対し、ETFはリアルタイムで値段が動き、いつでも売買できます。</p></dd>
+      </div>
+      <div class="term">
+        <dt>アクティブファンド</dt>
+        <dd><p>プロが銘柄を選んで「平均に勝とう」とする商品。手数料が高く（年1〜2%）、長期では大半がインデックスに負けます。<strong>初心者は選ばなくていい</strong>です。</p></dd>
+      </div>
+      <div class="term">
+        <dt>分散投資／集中投資</dt>
+        <dd><p><strong>分散</strong>はいろんなものに分けて買う（卵をひとつのカゴに盛るな）。<strong>集中</strong>はひとつに賭ける——当たれば大きいが、外れたら終わりです。</p></dd>
+      </div>
+      <div class="term">
+        <dt>時価総額</dt>
+        <dd><p>その会社まるごとの値段。株価 × 発行株数。小さすぎる会社は値動きが乱暴で、初心者には危険です。</p></dd>
+      </div>
+      <div class="term">
+        <dt>配当</dt>
+        <dd><p>会社の利益のおすそわけ。持っているだけで年1〜2回もらえることがあります。</p></dd>
+      </div>
+    </dl>
+
+    <div class="note">
+      <span class="tag">なぜインデックスが強いのか</span>
+      <ul style="margin-bottom:0">
+        <li><strong>1社潰れても効かない</strong> ── 1社に全額入れてその会社が倒産＝<strong>−100%</strong>。500社に分散して1社倒産＝<strong>−0.2%</strong></li>
+        <li><strong>手数料が安い</strong> ── 銘柄を選ぶ手間がないぶん、運営コストが桁違いに低い</li>
+        <li><strong>プロの大半が平均に勝てない</strong> ── 高い手数料を払ってプロに任せても、長期では平均に負けることのほうが多い</li>
+      </ul>
+    </div>
+
+    <p class="gloss-sec">C ── 制度と口座</p>
+    <dl class="gloss">
+      <div class="term key">
+        <dt>NISA</dt>
+        <dd>
+          <p><strong>利益に税金がかからない特別な口座。</strong>普通は利益に20.315%の税金がかかります（100万円儲けたら約20万円）。NISAならこれがゼロ。新NISAはつみたて投資枠が年120万円、成長投資枠が年240万円、生涯で1800万円まで、期間は無期限です。</p>
+          <p><span class="ex">勉強も判断もいらないのに、確実に手取りが約20%良くなる唯一の方法。使わない理由がありません。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>iDeCo</dt>
+        <dd><p>老後のための積立制度。節税効果はNISAより大きいのですが、<strong>60歳まで1円も引き出せません。</strong>5年目標の資金には使えないので、老後資金として別に考えてください。</p></dd>
+      </div>
+      <div class="term">
+        <dt>特定口座<span class="en">源泉徴収あり</span></dt>
+        <dd><p>証券会社が税金の計算と支払いを代わりにやってくれる口座。初心者はこれを選べば、確定申告の手間がほぼなくなります。</p></dd>
+      </div>
+      <div class="term">
+        <dt>単元株／単元未満株</dt>
+        <dd>
+          <p>日本株は原則<strong>100株がひとまとめ（1単元）</strong>でしか買えません。株価3,000円の会社なら、最低30万円必要ということです。</p>
+          <p><span class="ex"><strong>単元未満株サービス</strong>（SBI証券のS株、楽天証券のかぶミニ、マネックスのワン株など）なら1株から買えます。資金30万円ならこちらが現実的です。</span></p>
+        </dd>
+      </div>
+    </dl>
+
+    <p class="gloss-sec">D ── 手数料（静かにお金を減らすもの）</p>
+    <dl class="gloss">
+      <div class="term key">
+        <dt>信託報酬</dt>
+        <dd>
+          <p><strong>投資信託を持っている間、毎日かかり続ける手数料。</strong>「年0.1%」なら100万円につき年1,000円。小さく見えますが、長期で効きます。</p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>売買手数料</dt>
+        <dd><p>買うとき・売るときにかかるお金。ネット証券は無料化が進んでいます。</p></dd>
+      </div>
+      <div class="term">
+        <dt>スプレッド</dt>
+        <dd><p><strong>買値と売値の差。</strong>「手数料無料」と書いてあっても、この差の形でコストを払っていることがあります。FXや単元未満株では特に重要です。</p></dd>
+      </div>
+    </dl>
+
+    <div class="scroll">
+    <table>
+      <caption>信託報酬の差（100万円を年7%で運用）</caption>
+      <thead><tr><th class="num">経過</th><th class="num">年0.1%の商品</th><th class="num">年1.5%の商品</th><th class="num">差</th></tr></thead>
+      <tbody>
+        <tr><td class="num">10年後</td><td class="num">195万</td><td class="num">171万</td><td class="num">24万</td></tr>
+        <tr><td class="num">20年後</td><td class="num">380万</td><td class="num">292万</td><td class="num">88万</td></tr>
+        <tr class="mark"><td class="num">30年後</td><td class="num hit">740万</td><td class="num miss">498万</td><td class="num">242万</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>たった1.4%の差が、30年で242万円。</strong>商品を選ぶとき、ここは必ず見てください。</p>
+
+    <p class="gloss-sec">E ── 危険な言葉</p>
+    <dl class="gloss">
+      <div class="term warn">
+        <dt>レバレッジ<span class="en">leverage ＝ てこ</span></dt>
+        <dd>
+          <p>英語で<strong>「てこ」</strong>。小さい力で重い物を動かす、あの理科の道具です。投資では<strong>自分のお金より大きな額を動かすこと</strong>。借りたお金で投資するのと同じです。</p>
+          <p><strong>利益が◯倍になるということは、損失も◯倍になるということ。</strong>ここを勘違いする人が本当に多いのです。</p>
+        </dd>
+      </div>
+      <div class="term warn">
+        <dt>信用取引</dt>
+        <dd><p>証券会社からお金や株を借りて売買すること。日本株では最大約3.3倍まで。借金なので、<strong>負けたら手持ち以上のお金を失うことがあります。</strong></p></dd>
+      </div>
+      <div class="term warn">
+        <dt>空売り</dt>
+        <dd><p>持っていない株を借りて先に売り、値下がりしてから買い戻して差額を取る手法。下げ相場でも儲けられますが——<strong>上がったときの損に上限がありません。</strong>株は0円までしか下がりませんが、上には10倍にも100倍にもなり得るからです。</p></dd>
+      </div>
+      <div class="term warn">
+        <dt>追証</dt>
+        <dd><p>「損が大きすぎるので、追加でお金を入れてください」という証券会社からの請求。入れられなければ強制的に決済されます。<strong>これで借金が残る人がいます。</strong></p></dd>
+      </div>
+      <div class="term warn">
+        <dt>ロスカット／強制決済</dt>
+        <dd><p>損が一定を超えたとき、証券会社が勝手にポジションを切る仕組み。守ってくれる仕組みに見えますが、<strong>発動した時点で資金の大半は消えています。</strong></p></dd>
+      </div>
+      <div class="term warn">
+        <dt>ナンピン</dt>
+        <dd><p>下がったところで買い増して、平均の買値を下げること。うまくいけば早く戻せますが、<strong>下がり続けたら傷が倍になります。</strong>上級者以外は禁止。</p></dd>
+      </div>
+      <div class="term warn">
+        <dt>塩漬け</dt>
+        <dd><p>損を確定したくなくて、値下がりした株を売れずに持ち続けること。お金と時間が何年も固定されます。<strong>損切りをしないと、必ずこれになります。</strong></p></dd>
+      </div>
+    </dl>
+
+    <div class="scroll">
+    <table>
+      <caption>レバレッジ：資金30万円で動かすと、1日でこうなる</caption>
+      <thead><tr><th class="num">倍率</th><th class="num">動かす額</th><th class="num">相場+10%</th><th class="num">相場−10%</th><th class="num">相場−20%</th></tr></thead>
+      <tbody>
+        <tr class="mark"><td class="num">1倍（普通）</td><td class="num">30万円</td><td class="num">33.0万 +10%</td><td class="num">27.0万 −10%</td><td class="num">24.0万 −20%</td></tr>
+        <tr><td class="num">2倍</td><td class="num">60万円</td><td class="num">36.0万 +20%</td><td class="num">24.0万 −20%</td><td class="num">18.0万 −40%</td></tr>
+        <tr><td class="num">3倍</td><td class="num">90万円</td><td class="num">39.0万 +30%</td><td class="num">21.0万 −30%</td><td class="num">12.0万 −60%</td></tr>
+        <tr><td class="num">5倍</td><td class="num">150万円</td><td class="num">45.0万 +50%</td><td class="num">15.0万 −50%</td><td class="num miss"><strong>全損</strong></td></tr>
+        <tr><td class="num">10倍</td><td class="num">300万円</td><td class="num">60.0万 +100%</td><td class="num miss"><strong>全損</strong></td><td class="num miss"><strong>全損</strong></td></tr>
+        <tr><td class="num">25倍（FX最大）</td><td class="num">750万円</td><td class="num">105.0万 +250%</td><td class="num miss"><strong>全損</strong></td><td class="num miss"><strong>全損</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="scroll">
+    <table>
+      <caption>資金がゼロになるまでの距離</caption>
+      <thead><tr><th class="num">倍率</th><th>相場がこれだけ下がると資金ゼロ</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1倍</td><td>−100%（会社が消滅するレベル）</td></tr>
+        <tr><td class="num">3倍</td><td>−33%</td></tr>
+        <tr><td class="num">10倍</td><td><strong>−10%</strong>（ドル円150円なら15円）</td></tr>
+        <tr class="mark"><td class="num">25倍</td><td><strong>−4%</strong>（ドル円150円なら、わずか<strong>6円</strong>）</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note danger">
+      <span class="tag">ドル円が6円動くのは、数日でふつうに起きます</span>
+      <p><strong>レバレッジは腕を増幅する道具です。</strong>腕がプラスの人は儲けが増え、腕がマイナスの人は破産が早まる。初心者にとっては<strong>破産までの時間を短縮する装置</strong>でしかありません。最初の2年は絶対に触らないでください。</p>
+    </div>
+
+    <p class="gloss-sec">F ── 注文のしかた</p>
+    <dl class="gloss">
+      <div class="term">
+        <dt>現物取引</dt>
+        <dd><p>自分のお金の範囲だけで売買すること。借金なし。<strong>初心者はこれだけ。</strong></p></dd>
+      </div>
+      <div class="term">
+        <dt>成行注文</dt>
+        <dd><p>値段を指定せず「いくらでもいいから今すぐ買う／売る」。確実に成立しますが、思わぬ値段になることがあります。</p></dd>
+      </div>
+      <div class="term">
+        <dt>指値注文</dt>
+        <dd><p>「1,000円以下になったら買う」と値段を指定する注文。希望の値段で買えますが、その値段が来なければ買えません。</p></dd>
+      </div>
+      <div class="term key">
+        <dt>逆指値注文</dt>
+        <dd>
+          <p><strong>「1,000円まで下がったら売る」という、損切り専用の注文。</strong>これを買った直後に必ず入れてください。</p>
+          <p><span class="ex">人間は損が出ると「もう少し待てば戻るかも」と考えてしまいます。逆指値は、<strong>その弱さを機械に肩代わりさせる装置</strong>です。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>約定</dt>
+        <dd><p>売買が成立すること。「注文を出した」と「約定した」は別です。</p></dd>
+      </div>
+      <div class="term">
+        <dt>板</dt>
+        <dd><p>「いくらで何株買いたい人がいるか」の一覧表。</p></dd>
+      </div>
+    </dl>
+
+    <p class="gloss-sec">G ── チャートの言葉</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>言葉</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ローソク足</strong></td><td>一定期間の値動きを1本にまとめた記号。始値・終値・高値・安値の4つが入る</td></tr>
+        <tr><td><strong>陽線／陰線</strong></td><td>値上がりで終わった／値下がりで終わった1本</td></tr>
+        <tr><td><strong>実体／ヒゲ</strong></td><td>四角い部分／上下に伸びた細い線</td></tr>
+        <tr><td><strong>トレンド</strong></td><td>値動きの方向。山と谷が両方切り上がれば上昇トレンド</td></tr>
+        <tr><td><strong>レンジ</strong></td><td>方向感なく、同じ幅を行ったり来たりしている状態</td></tr>
+        <tr><td><strong>支持線（サポート）</strong></td><td>何度も下げ止まる値段。「床」</td></tr>
+        <tr><td><strong>抵抗線（レジスタンス）</strong></td><td>何度も上げ止まる値段。「天井」</td></tr>
+        <tr><td><strong>ブレイク</strong></td><td>支持線や抵抗線を勢いよく突き抜けること</td></tr>
+        <tr><td><strong>だまし</strong></td><td>抜けたと思ったら、すぐ戻ってしまうこと</td></tr>
+        <tr><td><strong>押し目</strong></td><td>上昇トレンドの途中で一時的に下がったところ。買い場の候補</td></tr>
+        <tr><td><strong>順張り／逆張り</strong></td><td>流れに乗る／流れに逆らう。<strong>初心者は順張りだけ</strong></td></tr>
+        <tr><td><strong>移動平均線</strong></td><td>直近◯日間の平均値段を線でつないだもの</td></tr>
+        <tr><td><strong>ゴールデンクロス</strong></td><td>短い平均線が長い平均線を下から上に抜く。買いサインとされるが<strong>必ず遅れる</strong></td></tr>
+        <tr><td><strong>出来高</strong></td><td>その期間に売買された量。<strong>その動きの本気度</strong></td></tr>
+        <tr><td><strong>ダイバージェンス</strong></td><td>値段とインジケーターが逆のことを言っている状態。勢いの衰えのサイン</td></tr>
+        <tr><td><strong>時間足</strong></td><td>ローソク1本の長さ。日足なら1本＝1日</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p class="gloss-sec">H ── リスク管理の言葉</p>
+    <dl class="gloss">
+      <div class="term">
+        <dt>ポジション</dt>
+        <dd><p>今持っている売買の状態。「ポジションを持つ」＝買っている（または売っている）状態にあること。</p></dd>
+      </div>
+      <div class="term key">
+        <dt>損切り<span class="en">stop loss</span></dt>
+        <dd>
+          <p>「ここまで下がったら諦めて売る」と決めて、実行すること。</p>
+          <p><span class="ex"><strong>損切りは失敗ではなく、保険料です。</strong>火災保険を払って火事が起きなかったからといって、損したとは思わないですよね。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>利確</dt>
+        <dd><p>利益を確定させること＝売って現金に戻すこと。<strong>売るまで利益は幻です。</strong></p></dd>
+      </div>
+      <div class="term key">
+        <dt>リスクリワード比</dt>
+        <dd>
+          <p>「損する可能性の大きさ」と「狙える利益の大きさ」の比。90円の損を覚悟して180円を狙うなら<strong>1:2</strong>。</p>
+          <p><span class="ex">比率が1:3なら、<strong>勝率30%でも資産は増えます。</strong>10回中7回負けても勝てる。初心者は「当てること」を目指し、経験者は「負けを小さく、勝ちを大きく」を目指します。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>期待値</dt>
+        <dd><p>1回あたり、平均していくら儲かるか（損するか）。「勝率が高い」だけでは意味がありません。<strong>勝率 × 勝ったときの大きさ − 負ける確率 × 負けたときの大きさ</strong>、これがプラスかどうかがすべてです。</p></dd>
+      </div>
+      <div class="term">
+        <dt>ボラティリティ</dt>
+        <dd><p>値動きの激しさ。高いほど大きく儲かる可能性も、大きく損する可能性も上がります。</p></dd>
+      </div>
+      <div class="term">
+        <dt>ドローダウン</dt>
+        <dd><p>資産が、一番高かったところから何%減ったか。これが大きいほど、<strong>心が折れて途中でやめる確率</strong>が上がります。</p></dd>
+      </div>
+      <div class="term key">
+        <dt>ドルコスト平均法</dt>
+        <dd>
+          <p><strong>毎回同じ金額を、決まったタイミングで買い続けるやり方。</strong>値段が高いときは少なく、安いときは多く買えるので、買値が自然にならされます。</p>
+          <p><span class="ex">「いつ買うか」を考えなくて済むのが、最大の利点です。</span></p>
+        </dd>
+      </div>
+      <div class="term">
+        <dt>リバランス</dt>
+        <dd><p>崩れた資産の配分を、元の割合に戻す作業。「株70：現金30」で始めて株が値上がりし「株80：現金20」になったら、株を少し売って戻す。<strong>自動的に「高くなったものを売り、安いものを買う」ことになります。</strong>年1回で十分です。</p></dd>
+      </div>
+      <div class="term">
+        <dt>生活防衛資金</dt>
+        <dd><p>投資とは別に取っておく、<strong>生活費の6ヶ月分の現金。</strong>これがないと、暴落のときに「生活のために底値で売る」羽目になります。投資の前に、まずこれ。</p></dd>
+      </div>
+    </dl>
+
+    <p class="gloss-sec">I ── 見たら逃げる言葉</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>言葉</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>「元本保証で高利回り」</td><td><strong>詐欺。</strong>元本保証と高利回りは両立しません</td></tr>
+        <tr><td>「絶対に儲かる」</td><td><strong>詐欺。</strong>絶対はありません</td></tr>
+        <tr><td>「あなただけに特別に」</td><td><strong>詐欺。</strong>本当に勝てる方法を他人に配る人はいません</td></tr>
+        <tr><td>「今だけ」「今すぐ決めて」</td><td><strong>詐欺。</strong>考える時間を奪うのが手口です</td></tr>
+        <tr><td>「未公開株」「AIが自動で稼ぐ」</td><td><strong>ほぼ詐欺。</strong></td></tr>
+        <tr><td>月額◯円のシグナル配信</td><td>配信者が儲かる仕組み。<strong>勝てる方法は月数千円では売られません</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
   </section>
 
   <!-- ═══════════ 結び ═══════════ -->

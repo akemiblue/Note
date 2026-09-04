@@ -87,6 +87,7 @@
 | 4 | [docs/04-practice.md](docs/04-practice.md) | リプレイ機能・ペーパートレード・アラートで練習する |
 | 5 | [docs/05-asset-plan.md](docs/05-asset-plan.md) | 30万→500万の具体的な5年設計図とリスク管理 |
 | 6 | [docs/06-rules-checklist.md](docs/06-rules-checklist.md) | 自分の売買ルールの作り方／毎回使うチェックリスト |
+| 7 | [docs/07-glossary.md](docs/07-glossary.md) | **用語辞典** ― インデックス・レバレッジなど、全部やさしい言葉で |
 
 ---
 
