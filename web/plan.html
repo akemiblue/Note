@@ -1,0 +1,367 @@
+<title>45万円からの20年計画</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#E9ECF1; --surface:#FCFCFD; --surface-2:#F2F4F8;
+    --ink:#141922; --ink-2:#3D4654; --muted:#616B7A;
+    --rule:#D0D7E1; --rule-soft:#DFE4EC;
+    --ai:#1E3F73; --ai-2:#31629E; --ai-wash:#E2E9F4;
+    --shu:#B93D28; --shu-wash:#F6E4DF;
+    --ok:#2E6B4F; --ok-wash:#E1EDE7;
+    --sumi:#2A3340;
+    --shadow:0 1px 2px rgba(20,25,34,.06), 0 8px 24px -14px rgba(20,25,34,.22);
+    --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+    --mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0E1218; --surface:#161B23; --surface-2:#1C222B;
+    --ink:#E7EBF1; --ink-2:#C3CAD5; --muted:#98A2B1;
+    --rule:#2A3340; --rule-soft:#222A35;
+    --ai:#86ABDF; --ai-2:#9DBEEA; --ai-wash:#1A2434;
+    --shu:#E8785F; --shu-wash:#2E1E1B;
+    --ok:#7FC4A0; --ok-wash:#16241E;
+    --sumi:#C3CAD5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0E1218; --surface:#161B23; --surface-2:#1C222B;
+    --ink:#E7EBF1; --ink-2:#C3CAD5; --muted:#98A2B1;
+    --rule:#2A3340; --rule-soft:#222A35;
+    --ai:#86ABDF; --ai-2:#9DBEEA; --ai-wash:#1A2434;
+    --shu:#E8785F; --shu-wash:#2E1E1B;
+    --ok:#7FC4A0; --ok-wash:#16241E;
+    --sumi:#C3CAD5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.8; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:840px; margin:0 auto; padding:0 22px 90px}
+
+  header.mast{padding:56px 0 30px; border-bottom:2px solid var(--sumi)}
+  .kicker{font-family:var(--mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0 0 18px}
+  h1{font-family:var(--serif); font-weight:700; margin:0; font-size:clamp(1.9rem,5.6vw,3rem); line-height:1.26; letter-spacing:.02em; text-wrap:balance}
+  .premise{display:flex; flex-wrap:wrap; gap:8px 26px; margin:22px 0 0; font-size:.88rem; color:var(--muted)}
+  .premise b{color:var(--ink-2); font-family:var(--mono); font-weight:500}
+
+  section{margin:52px 0 0}
+  h2{font-family:var(--serif); font-weight:700; font-size:1.42rem; margin:0 0 6px; letter-spacing:.02em; display:flex; align-items:baseline; gap:12px}
+  h2 .n{font-family:var(--mono); font-size:.62rem; letter-spacing:.16em; color:var(--shu); font-weight:500}
+  .sub{color:var(--muted); font-size:.9rem; margin:0 0 22px; max-width:62ch}
+  h3{font-family:var(--serif); font-weight:600; font-size:1.06rem; margin:32px 0 10px; letter-spacing:.02em}
+  p{margin:0 0 14px; max-width:64ch}
+  strong{font-weight:700}
+  em{font-style:normal; background:linear-gradient(transparent 62%, var(--shu-wash) 62%); font-weight:700; padding:0 1px}
+
+  /* stat tiles */
+  .tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); box-shadow:var(--shadow); margin:0 0 20px}
+  .tile{background:var(--surface); padding:20px 22px}
+  .tile .k{font-size:.8rem; color:var(--muted); margin:0 0 5px}
+  .tile .v{font-family:var(--mono); font-size:1.85rem; font-weight:500; line-height:1.15; font-variant-numeric:tabular-nums; color:var(--ink)}
+  .tile .v.warn{color:var(--shu)} .tile .v.good{color:var(--ok)}
+  .tile .n{font-size:.78rem; color:var(--muted); margin:6px 0 0; line-height:1.5}
+
+  .scroll{overflow-x:auto; margin:0 0 20px}
+  table{border-collapse:collapse; width:100%; min-width:400px; font-size:.9rem; background:var(--surface); box-shadow:var(--shadow)}
+  caption{caption-side:top; text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); padding:0 0 8px}
+  th,td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--rule-soft)}
+  thead th{background:var(--surface-2); font-size:.77rem; font-weight:700; color:var(--ink-2); border-bottom:1px solid var(--rule); white-space:nowrap}
+  tbody tr:last-child td{border-bottom:none}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+  tr.mark td{background:var(--ai-wash)}
+  .hit{color:var(--ai); font-weight:700} .miss{color:var(--muted)} .bad{color:var(--shu); font-weight:700}
+
+  /* levers */
+  .levers{display:flex; flex-direction:column; gap:8px; margin:0 0 18px}
+  .lev{display:grid; grid-template-columns:2.2rem 1fr; gap:0 16px; background:var(--surface); box-shadow:var(--shadow); padding:15px 20px; border-left:4px solid var(--ok)}
+  .lev.gamble{border-left-color:var(--shu); background:var(--shu-wash)}
+  .lev .rank{font-family:var(--serif); font-size:1.3rem; color:var(--ok); line-height:1.3}
+  .lev.gamble .rank{color:var(--shu)}
+  .lev .t{font-weight:700; font-size:1rem; line-height:1.5}
+  .lev .d{font-size:.87rem; color:var(--ink-2); margin-top:2px}
+  .lev .badge{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ok); background:var(--ok-wash); padding:2px 7px; border-radius:2px; margin-left:8px; vertical-align:1px}
+  .lev.gamble .badge{color:var(--shu); background:var(--surface)}
+
+  /* milestones */
+  .track{position:relative; margin:0 0 22px; padding-left:26px}
+  .track::before{content:""; position:absolute; left:6px; top:10px; bottom:10px; width:2px; background:var(--rule)}
+  .ms{position:relative; background:var(--surface); box-shadow:var(--shadow); padding:14px 20px; margin-bottom:10px}
+  .ms::before{content:""; position:absolute; left:-26px; top:20px; width:14px; height:14px; border-radius:50%; background:var(--surface); border:3px solid var(--ai)}
+  .ms.goal::before{background:var(--ai)}
+  .ms .when{font-family:var(--mono); font-size:.76rem; letter-spacing:.1em; color:var(--shu); text-transform:uppercase}
+  .ms .what{font-family:var(--serif); font-weight:600; font-size:1.06rem; margin-top:2px}
+  .ms .note{font-size:.86rem; color:var(--ink-2); margin-top:4px}
+
+  figure{margin:0 0 24px; background:var(--surface); padding:20px 18px 14px; box-shadow:var(--shadow)}
+  figure svg{display:block; width:100%; height:auto}
+  figcaption{font-size:.82rem; color:var(--muted); margin-top:10px; border-top:1px solid var(--rule-soft); padding-top:9px; line-height:1.6}
+  .g-grid line{stroke:var(--rule); stroke-width:1}
+  .g-ax text{font-family:var(--mono); font-size:11px; fill:var(--muted)}
+  .g-line{fill:none; stroke-width:2.4; stroke-linejoin:round}
+  .g-end{font-family:var(--mono); font-size:12px; font-weight:500}
+
+  .note-box{background:var(--surface); border-left:3px solid var(--ai); padding:16px 20px; margin:0 0 18px; box-shadow:var(--shadow)}
+  .note-box.danger{border-left-color:var(--shu)}
+  .note-box .tag{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ai); margin-bottom:7px; font-weight:500}
+  .note-box.danger .tag{color:var(--shu)}
+  .note-box p:last-child, .note-box ul:last-child{margin-bottom:0}
+  ul{margin:0 0 14px; padding-left:1.25em; max-width:62ch} li{margin-bottom:6px}
+
+  /* rules */
+  .rules{counter-reset:r; list-style:none; padding:0; margin:0 0 18px; display:flex; flex-direction:column; gap:8px}
+  .rules li{counter-increment:r; background:var(--surface); box-shadow:var(--shadow); padding:13px 20px 13px 52px; position:relative; margin:0; font-size:.95rem}
+  .rules li::before{content:counter(r); position:absolute; left:20px; top:13px; font-family:var(--mono); font-size:.86rem; color:var(--shu); font-weight:500}
+
+  /* checklist */
+  .cl{background:var(--surface); box-shadow:var(--shadow); padding:6px 18px 4px}
+  .cl label{display:flex; gap:11px; align-items:flex-start; padding:11px 0; cursor:pointer; font-size:.94rem; line-height:1.6; border-bottom:1px solid var(--rule-soft)}
+  .cl label:last-of-type{border-bottom:none}
+  .cl input{appearance:none;-webkit-appearance:none; flex:0 0 auto; width:17px; height:17px; margin-top:5px; border:1.5px solid var(--muted); border-radius:2px; background:var(--surface); cursor:pointer; position:relative}
+  .cl input:checked{background:var(--ai); border-color:var(--ai)}
+  .cl input:checked::after{content:""; position:absolute; left:5px; top:1px; width:4px; height:9px; border:solid var(--surface); border-width:0 2px 2px 0; transform:rotate(45deg)}
+  .cl input:focus-visible{outline:2px solid var(--ai-2); outline-offset:2px}
+  .cl label:has(input:checked){color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule)}
+  .cl-foot{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:13px 0; border-top:1px solid var(--rule)}
+  .cl-foot .st{font-family:var(--mono); font-size:.82rem; color:var(--muted); font-variant-numeric:tabular-nums}
+  .cl-foot .st.ok{color:var(--ok); font-weight:500}
+  .cl-foot button{font-family:var(--sans); font-size:.82rem; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--rule); padding:6px 14px; border-radius:3px; cursor:pointer}
+  .cl-foot button:hover{background:var(--ai-wash); color:var(--ai); border-color:var(--ai)}
+
+  footer{margin-top:56px; padding-top:26px; border-top:2px solid var(--sumi)}
+  .pull{font-family:var(--serif); font-size:clamp(1.1rem,3vw,1.4rem); line-height:1.9; max-width:28ch; margin:0 0 20px; letter-spacing:.02em}
+  .fine{font-size:.8rem; color:var(--muted); line-height:1.8; max-width:70ch}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">個人プラン ／ 2026年9月 作成</p>
+  <h1>45万円からの20年計画</h1>
+  <div class="premise">
+    <span>入金 <b>月20,000円</b></span>
+    <span>生活費 <b>月200,000円</b></span>
+    <span>現在の資産 <b>452,538円</b></span>
+    <span>現金 <b>0円</b></span>
+  </div>
+</header>
+
+<!-- 現在地 -->
+<section>
+  <h2><span class="n">01</span>現在地</h2>
+  <p class="sub">まず、事実を正確に置きます。ここを間違えると、すべての計画が狂います。</p>
+
+  <div class="tiles">
+    <div class="tile"><p class="k">総資産</p><p class="v">452,538<span style="font-size:.5em">円</span></p><p class="n">全額が投資。現金はゼロ</p></div>
+    <div class="tile"><p class="k">生活防衛資金</p><p class="v warn">0<span style="font-size:.5em">円</span></p><p class="n">目標30万円に対して進捗0%</p></div>
+    <div class="tile"><p class="k">1銘柄への集中度</p><p class="v warn">22.8<span style="font-size:.5em">%</span></p><p class="n">積立停止済み。時間が薄める</p></div>
+  </div>
+
+  <div class="scroll">
+  <table>
+    <caption>資産の内訳</caption>
+    <thead><tr><th>保有</th><th class="num">金額</th><th>口座</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td>eMAXIS Slim 米国株式（S&amp;P500）ほか3本</td><td class="num">322,858円</td><td class="bad">課税（特定預り）</td><td>含み益 +51.6%。<strong>触らない</strong></td></tr>
+      <tr><td>PayPay ADS（個別株1社）</td><td class="num">103,184円</td><td class="hit">NISA成長</td><td>積立停止済み。<strong>出口を決めて保有</strong></td></tr>
+      <tr><td>eMAXIS／PayPay証券 全世界バランス</td><td class="num">26,496円</td><td class="hit">NISA成長</td><td>積立を止める。保有は継続</td></tr>
+      <tr class="mark"><td><strong>現金</strong></td><td class="num bad">0円</td><td>—</td><td><strong>これから作る</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note-box danger">
+    <span class="tag">今わかっている最大のリスク</span>
+    <p>生活費が月20万円なのに、<strong>現金がゼロ</strong>。突発の出費が来たら、投資を売るしかありません。そして「売らざるを得ないとき」と「相場が悪いとき」は重なりやすい。<strong>+51.6%の含み益は、その一度で消えます。</strong></p>
+  </div>
+</section>
+
+<!-- レバー -->
+<section>
+  <h2><span class="n">02</span>確実なものから順にやる</h2>
+  <p class="sub">資産 ＝（収入 − 支出）× 時間 ×（1 + 利回り）。この式のうち、不確実なのは利回りだけです。ほとんどの人は、その1つだけを追いかけて、残り全部を無視します。</p>
+
+  <div class="levers">
+    <div class="lev"><span class="rank">一</span><div>
+      <div class="t">支出を月1万円減らす<span class="badge">100% 確実</span></div>
+      <div class="d">年+12万円。相場とまったく無関係に手に入る。スマホ・保険・サブスク・使途不明金から。</div></div></div>
+    <div class="lev"><span class="rank">二</span><div>
+      <div class="t">収入を月1万円増やす<span class="badge">ほぼ確実</span></div>
+      <div class="d">年+12万円。副業・昇給・転職。努力は要るが、結果は相場に左右されない。</div></div></div>
+    <div class="lev"><span class="rank">三</span><div>
+      <div class="t">NISAで税金をゼロにする<span class="badge">確実</span></div>
+      <div class="d">利益への20.315%が消える。手続きだけで済む。<strong>月2万・20年・年8%なら、税金141.8万円が0円に。</strong></div></div></div>
+    <div class="lev"><span class="rank">四</span><div>
+      <div class="t">手数料の安い商品を選ぶ<span class="badge">達成済み</span></div>
+      <div class="d">信託報酬0.1%と1.0%の差は、20年で32万円。<strong>あなたのeMAXIS Slimは日本最安クラス。ここは正解でした。</strong></div></div></div>
+    <div class="lev"><span class="rank">五</span><div>
+      <div class="t">続ける期間を延ばす<span class="badge">確実</span></div>
+      <div class="d">複利は後半で効く。5年でやめる人と20年続ける人の差は、才能ではなく年数。</div></div></div>
+    <div class="lev gamble"><span class="rank">六</span><div>
+      <div class="t">利回りを上げる<span class="badge">不確実</span></div>
+      <div class="d"><strong>ここだけが賭けです。</strong>そして多くの人が、ここだけに時間を使う。一〜五を全部やってから触る領域。</div></div></div>
+  </div>
+
+  <div class="scroll">
+  <table>
+    <caption>一 の威力：入金額だけを変えた場合（20年後・年8%・現金30万円込み）</caption>
+    <thead><tr><th class="num">月の入金</th><th class="num">20年後</th><th class="num">月2万との差</th></tr></thead>
+    <tbody>
+      <tr class="mark"><td class="num">20,000円</td><td class="num">1,291万円</td><td class="num miss">—</td></tr>
+      <tr><td class="num">30,000円</td><td class="num hit">1,810万円</td><td class="num hit">+519万円</td></tr>
+      <tr><td class="num">40,000円</td><td class="num hit">2,329万円</td><td class="num hit">+1,038万円</td></tr>
+      <tr><td class="num">50,000円</td><td class="num hit">2,848万円</td><td class="num hit">+1,557万円</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><em>月1万円多く入れるだけで、20年後に519万円。</em>これは銘柄選びで稼げる額ではありません。節約と副業で、確実に手に入る額です。</p>
+</section>
+
+<!-- フェーズ1 -->
+<section>
+  <h2><span class="n">03</span>フェーズ1 ── 盾をつくる</h2>
+  <p class="sub">最初の15ヶ月は、投資をしません。月20,000円は全額、現金に回します。遠すぎる目標は人をやめさせるので、3つの中間地点に区切ります。</p>
+
+  <div class="track">
+    <div class="ms"><div class="when">今週</div><div class="what">流出を止める</div>
+      <div class="note">SBIの積立（月10,000円・毎月21日・課税口座）を解除。PayPay全世界バランスのつみたても停止。<strong>ここを止めて初めて、月20,000円が現金に向かいます。</strong></div></div>
+    <div class="ms"><div class="when">5ヶ月後</div><div class="what">現金 100,000円</div>
+      <div class="note">生活費の0.5ヶ月分。家電の故障や急な医療費は、もうこれで払えます。</div></div>
+    <div class="ms"><div class="when">10ヶ月後</div><div class="what">現金 200,000円</div>
+      <div class="note">生活費の1ヶ月分。ここでPayPay ADSを保有し続けるか再判断します。</div></div>
+    <div class="ms goal"><div class="when">15ヶ月後</div><div class="what">現金 300,000円 ── 解禁</div>
+      <div class="note">生活費1.5ヶ月分。<strong>この日から投資を再開します。</strong>カレンダーに書いてください。</div></div>
+  </div>
+
+  <div class="note-box">
+    <span class="tag">この15ヶ月、投資が止まるわけではありません</span>
+    <p>すでに持っている452,538円は、その間も市場で働き続けます。年8%なら15ヶ月で約50万円に。<strong>止めるのは「新規の入金」だけです。</strong></p>
+  </div>
+</section>
+
+<!-- フェーズ2 -->
+<section>
+  <h2><span class="n">04</span>フェーズ2 ── 積み上げる</h2>
+  <p class="sub">15ヶ月後から、月20,000円をNISAで投資に回します。現金30万円はそのまま据え置き、手をつけません。</p>
+
+  <div class="scroll">
+  <table>
+    <caption>買うもの（迷わないよう、先に決めておく）</caption>
+    <thead><tr><th>項目</th><th>決定</th></tr></thead>
+    <tbody>
+      <tr><td>銘柄</td><td><strong>全世界株式インデックス（オール・カントリー）を1本だけ</strong></td></tr>
+      <tr><td>理由</td><td>今の資産は<strong>100%が米国株・100%がドル建て</strong>。日本・欧州・新興国を足して、初めて本当の分散になる</td></tr>
+      <tr><td>口座</td><td><strong>必ずNISAのつみたて投資枠</strong>（課税口座では買わない）</td></tr>
+      <tr><td>金額</td><td>月20,000円（年24万円。NISA枠120万円に対して余裕あり）</td></tr>
+      <tr><td>本数</td><td><strong>1本。</strong>S&amp;P500を2本持って分散した気になる失敗は、もうしない</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 760 400" role="img" aria-label="現在の452,538円に、15ヶ月後から月2万円を積み立てた場合の資産推移。25年後は年5%で1,278万円、年8%で2,055万円、年10%で2,891万円。10年後の年8%は433万円。">
+      <g class="g-grid">
+        <line x1="64" y1="360" x2="640" y2="360"></line>
+        <line x1="64" y1="274.5" x2="640" y2="274.5"></line>
+        <line x1="64" y1="189" x2="640" y2="189"></line>
+        <line x1="64" y1="103.5" x2="640" y2="103.5"></line>
+        <line x1="64" y1="18" x2="640" y2="18"></line>
+      </g>
+      <g class="g-ax" text-anchor="end">
+        <text x="54" y="364">0</text><text x="54" y="278.5">700</text>
+        <text x="54" y="193">1400</text><text x="54" y="107.5">2100</text><text x="54" y="22">2800</text>
+      </g>
+      <g class="g-ax" text-anchor="middle">
+        <text x="64" y="382">0年</text><text x="179" y="382">5年</text><text x="294" y="382">10年</text>
+        <text x="410" y="382">15年</text><text x="525" y="382">20年</text><text x="640" y="382">25年</text>
+      </g>
+      <text class="g-ax" x="64" y="9" text-anchor="start" style="font-size:10px">万円</text>
+
+      <line x1="93" y1="18" x2="93" y2="360" stroke="var(--shu)" stroke-width="1.2" stroke-dasharray="4 4"></line>
+      <text x="98" y="32" style="font-family:var(--mono); font-size:10.5px; fill:var(--shu)">← 15ヶ月は現金づくり</text>
+      <line x1="64" y1="237.9" x2="640" y2="237.9" stroke="var(--ai)" stroke-width="1.2" stroke-dasharray="5 4"></line>
+      <text x="68" y="232" style="font-family:var(--mono); font-size:10.5px; fill:var(--ai)">1,000万円</text>
+
+      <polyline class="g-line" stroke="#4F7EA8" points="64,354.5 87,351.3 110,348 133,344.6 156,341 179,337.2 202,333.2 225,329 248,324.6 271,320 294,315.1 317,310 340,304.7 364,299 387,293.1 410,286.9 433,280.3 456,273.4 479,266.2 502,258.6 525,250.5 548,242.1 571,233.3 594,224 617,214.2 640,204"></polyline>
+      <polyline class="g-line" stroke="#1E3F73" points="64,354.5 87,351.1 110,347.6 133,343.8 156,339.7 179,335.3 202,330.5 225,325.4 248,319.8 271,313.7 294,307.1 317,300 340,292.2 364,283.9 387,274.8 410,265 433,254.4 456,242.9 479,230.4 502,216.9 525,202.3 548,186.5 571,169.4 594,150.8 617,130.7 640,109"></polyline>
+      <polyline class="g-line" stroke="#B93D28" points="64,354.5 87,351 110,347.3 133,343.3 156,338.9 179,334 202,328.6 225,322.6 248,316 271,308.7 294,300.6 317,291.7 340,281.9 364,271 387,259 410,245.7 433,231.1 456,214.9 479,197 502,177.3 525,155.5 548,131.4 571,104.7 594,75.3 617,42.8 640,6.9"></polyline>
+
+      <g class="g-end">
+        <text x="648" y="10.9" fill="#B93D28">2891万</text><text x="648" y="23" fill="var(--muted)" style="font-size:10px">年10%</text>
+        <text x="648" y="113" fill="#1E3F73">2055万</text><text x="648" y="125" fill="var(--muted)" style="font-size:10px">年8%</text>
+        <text x="648" y="208" fill="#4F7EA8">1278万</text><text x="648" y="220" fill="var(--muted)" style="font-size:10px">年5%</text>
+      </g>
+    </svg>
+    <figcaption>現在の452,538円 ＋ 15ヶ月後から月20,000円（現金30万円を含む合計）。<strong>年8%なら、1,000万円を超えるのは18年目あたり。</strong>手数料・税金は考慮していない単純計算で、実際の成績はこれより低くなります。マイナスの年も必ずあります。</figcaption>
+  </figure>
+
+  <div class="scroll">
+  <table>
+    <caption>年ごとの見通し（現金30万円を含む）</caption>
+    <thead><tr><th>利回り</th><th class="num">5年後</th><th class="num">10年後</th><th class="num">15年後</th><th class="num">20年後</th><th class="num">25年後</th></tr></thead>
+    <tbody>
+      <tr><td>年5%</td><td class="num">187万</td><td class="num">367万</td><td class="num">599万</td><td class="num">896万</td><td class="num">1,278万</td></tr>
+      <tr class="mark"><td><strong>年8%</strong></td><td class="num">202万</td><td class="num">433万</td><td class="num">778万</td><td class="num hit">1,291万</td><td class="num hit">2,055万</td></tr>
+      <tr><td>年10%</td><td class="num">213万</td><td class="num">486万</td><td class="num">935万</td><td class="num">1,675万</td><td class="num">2,891万</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ルール -->
+<section>
+  <h2><span class="n">05</span>破らないルール</h2>
+  <p class="sub">相場が動くと、人は必ず動きたくなります。そのときに読むための文章です。</p>
+  <ol class="rules">
+    <li><strong>暴落しても売らない。積立も止めない。</strong>数年に一度は−20%以上が来ます。そのとき安く買えるのが、積立の唯一の利点です。</li>
+    <li><strong>「お得」と書かれたボタンを押さない。</strong>おまかせ運用、高配当特集、ゴールド銘柄。押した人ではなく、押させた側が得をします。</li>
+    <li><strong>追加の講座・商材・サロンにお金を払わない。</strong>払った人ほど次も払います（サンクコスト）。防衛線はここに引きます。</li>
+    <li><strong>他人が「上がる」と言った銘柄を買わない。</strong>他人の確信は、あなたの根拠になりません。868円で学んだことです。</li>
+    <li><strong>信用取引・レバレッジには2年間触らない。</strong>25倍なら、ドル円が6円動くだけで資金がゼロになります。</li>
+    <li><strong>個別株は、資産の10〜20%まで。</strong>1回の損失は資産の2%以内。損切りを決めずに買わない。</li>
+    <li><strong>資産を見るのは週1回でいい。</strong>毎日見ると、必ず余計なことをしたくなります。</li>
+  </ol>
+</section>
+
+<!-- 今週 -->
+<section>
+  <h2><span class="n">06</span>今週やること</h2>
+  <p class="sub">計画は、実行されて初めて計画になります。この3つが終わるまで、フェーズ1は始まっていません。</p>
+  <div class="cl">
+    <label><input type="checkbox"><span><strong>SBIの積立を「解除」する</strong>（eMAXIS Slim S&amp;P500・月10,000円・毎月21日）。<strong>締切は9月21日。</strong>解除しても、保有している322,858円は売られません</span></label>
+    <label><input type="checkbox"><span><strong>PayPay証券「全世界バランス」のつみたてを停止</strong>する。保有26,496円はそのまま持ち続ける</span></label>
+    <label><input type="checkbox"><span><strong>PayPay ADSの保有ルールを紙に書く</strong> ── 保有する理由／損切りライン（推奨：取得単価2,577円を割ったら売る）／上限（総資産の30%）／再判断の日（10ヶ月後）</span></label>
+    <label><input type="checkbox"><span><strong>現金を置く口座を決める</strong>。投資に使わない銀行口座。証券口座に置くと、必ず使ってしまいます</span></label>
+    <label><input type="checkbox"><span><strong>固定費を洗い出す</strong>。スマホ・保険・サブスク。月1万円削れれば、20年後に519万円変わります</span></label>
+    <div class="cl-foot">
+      <span class="st" id="st">0 / 5</span>
+      <button type="button" id="rs">チェックをリセット</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="pull">早く増やそうとすると、必ず失う。<br>ゆっくり増やそうとすると、意外と早く増える。</p>
+  <p>あなたはすでに452,538円を持ち、含み益+51.6%を売らずに持ち続けています。<strong>それは投資でいちばん難しい能力です。</strong>足りないのは才能ではなく、盾だけ。15ヶ月で作りましょう。</p>
+  <ul class="fine" style="margin-top:22px; padding-left:1.2em">
+    <li>これは学習用の個人メモであり、投資助言ではありません。最終的な判断はご自身で行ってください。</li>
+    <li>金額はすべて手数料・税金を考慮しない単純計算です。年5〜10%の利回りは保証されたものではなく、マイナスの年も当然あります。</li>
+    <li>NISA等の制度、各社の手数料・サービス内容は変わります。必ず公式サイトで最新をご確認ください。</li>
+    <li>前提：入金 月20,000円（講座の支払いは完了済みとして計算）。生活費 月200,000円。2026年9月時点の残高に基づく。</li>
+  </ul>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var K="plan20y-v1", b=[].slice.call(document.querySelectorAll(".cl input")), s=document.getElementById("st"), r=document.getElementById("rs");
+  function render(){var n=b.filter(function(x){return x.checked}).length;s.textContent=n+" / "+b.length+(n===b.length?" — フェーズ1、開始":"");s.classList.toggle("ok",n===b.length);}
+  function save(){try{localStorage.setItem(K,JSON.stringify(b.map(function(x){return x.checked?1:0})))}catch(e){}}
+  try{var v=localStorage.getItem(K); if(v){var a=JSON.parse(v); if(Array.isArray(a)) b.forEach(function(x,i){x.checked=!!a[i]})}}catch(e){}
+  b.forEach(function(x){x.addEventListener("change",function(){render();save()})});
+  r.addEventListener("click",function(){b.forEach(function(x){x.checked=false});render();save()});
+  render();
+})();
+</script>
