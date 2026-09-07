@@ -88,6 +88,7 @@
 | 5 | [docs/05-asset-plan.md](docs/05-asset-plan.md) | 30万→500万の具体的な5年設計図とリスク管理 |
 | 6 | [docs/06-rules-checklist.md](docs/06-rules-checklist.md) | 自分の売買ルールの作り方／毎回使うチェックリスト |
 | 7 | [docs/07-glossary.md](docs/07-glossary.md) | **用語辞典** ― インデックス・レバレッジなど、全部やさしい言葉で |
+| 8 | [docs/08-kouza-review.md](docs/08-kouza-review.md) | 受講中の投資講座の**変換表** ― 何を採用し、何を上書きするか |
 
 ---
 
