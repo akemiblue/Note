@@ -44,6 +44,7 @@
   h1{font-family:var(--serif); font-weight:700; margin:0; font-size:clamp(1.9rem,5.6vw,3rem); line-height:1.26; letter-spacing:.02em; text-wrap:balance}
   .premise{display:flex; flex-wrap:wrap; gap:8px 26px; margin:22px 0 0; font-size:.88rem; color:var(--muted)}
   .premise b{color:var(--ink-2); font-family:var(--mono); font-weight:500}
+  .premise .rev{font-family:var(--mono); font-size:.76rem; color:var(--shu)}
 
   section{margin:52px 0 0}
   h2{font-family:var(--serif); font-weight:700; font-size:1.42rem; margin:0 0 6px; letter-spacing:.02em; display:flex; align-items:baseline; gap:12px}
@@ -138,12 +139,13 @@
 
 <header class="mast">
   <p class="kicker">個人プラン ／ 2026年9月 作成</p>
-  <h1>45万円からの20年計画</h1>
+  <h1>58万円からの20年計画</h1>
   <div class="premise">
     <span>入金 <b>月20,000円</b></span>
     <span>生活費 <b>月200,000円</b></span>
-    <span>現在の資産 <b>452,538円</b></span>
-    <span>現金 <b>0円</b></span>
+    <span>現在の資産 <b>588,175円</b></span>
+    <span>うち米ドル預り金 <b>83,542円</b></span>
+    <span class="rev">2026/9/7 全口座を確認して訂正</span>
   </div>
 </header>
 
@@ -153,9 +155,9 @@
   <p class="sub">まず、事実を正確に置きます。ここを間違えると、すべての計画が狂います。</p>
 
   <div class="tiles">
-    <div class="tile"><p class="k">総資産</p><p class="v">452,538<span style="font-size:.5em">円</span></p><p class="n">全額が投資。現金はゼロ</p></div>
-    <div class="tile"><p class="k">生活防衛資金</p><p class="v warn">0<span style="font-size:.5em">円</span></p><p class="n">目標30万円に対して進捗0%</p></div>
-    <div class="tile"><p class="k">1銘柄への集中度</p><p class="v warn">22.8<span style="font-size:.5em">%</span></p><p class="n">積立停止済み。時間が薄める</p></div>
+    <div class="tile"><p class="k">総資産</p><p class="v">588,175<span style="font-size:.5em">円</span></p><p class="n">SBI 458,545円 ＋ PayPay 129,630円</p></div>
+    <div class="tile"><p class="k">生活防衛資金の元</p><p class="v good">83,542<span style="font-size:.5em">円</span></p><p class="n">米ドル預り金。<strong>円に戻せば今日から盾になる</strong></p></div>
+    <div class="tile"><p class="k">1銘柄への集中度</p><p class="v warn">17.5<span style="font-size:.5em">%</span></p><p class="n">PayPay ADS。積立停止済み</p></div>
   </div>
 
   <div class="scroll">
@@ -163,17 +165,20 @@
     <caption>資産の内訳</caption>
     <thead><tr><th>保有</th><th class="num">金額</th><th>口座</th><th>状態</th></tr></thead>
     <tbody>
-      <tr><td>eMAXIS Slim 米国株式（S&amp;P500）ほか3本</td><td class="num">322,858円</td><td class="bad">課税（特定預り）</td><td>含み益 +51.6%。<strong>触らない</strong></td></tr>
+      <tr><td>投資信託（S&amp;P500系3本・SBI）</td><td class="num">322,856円</td><td class="bad">課税（特定預り）</td><td>含み益 +51.6%。<strong>触らない</strong></td></tr>
       <tr><td>PayPay ADS（個別株1社）</td><td class="num">103,184円</td><td class="hit">NISA成長</td><td>積立停止済み。<strong>出口を決めて保有</strong></td></tr>
+      <tr class="mark"><td><strong>預り金（米ドル）・SBI</strong></td><td class="num"><strong>83,542円</strong></td><td>—</td><td><strong>投資されていない現金。今週、円に戻す</strong></td></tr>
+      <tr><td>米国株式（SBI）</td><td class="num">44,625円</td><td class="bad">課税</td><td class="miss">中身が未確認。要調査</td></tr>
       <tr><td>eMAXIS／PayPay証券 全世界バランス</td><td class="num">26,496円</td><td class="hit">NISA成長</td><td>積立を止める。保有は継続</td></tr>
-      <tr class="mark"><td><strong>現金</strong></td><td class="num bad">0円</td><td>—</td><td><strong>これから作る</strong></td></tr>
+      <tr><td>外貨建債券（SBI）</td><td class="num">7,522円</td><td class="bad">課税</td><td class="miss">中身が未確認。要調査</td></tr>
+      <tr><td><strong>円の現金</strong></td><td class="num bad">0円</td><td>—</td><td>米ドル預り金の円転から作る</td></tr>
     </tbody>
   </table>
   </div>
 
   <div class="note-box danger">
     <span class="tag">今わかっている最大のリスク</span>
-    <p>生活費が月20万円なのに、<strong>現金がゼロ</strong>。突発の出費が来たら、投資を売るしかありません。そして「売らざるを得ないとき」と「相場が悪いとき」は重なりやすい。<strong>+51.6%の含み益は、その一度で消えます。</strong></p>
+    <p>生活費が月20万円なのに、<strong>円の現金がゼロ</strong>。突発の出費が来たら、投資を売るしかありません。そして「売らざるを得ないとき」と「相場が悪いとき」は重なりやすい。<strong>+51.6%の含み益は、その一度で消えます。</strong></p><p style="margin-top:10px">ただし<strong>米ドル預り金83,542円は、すでに現金です。</strong>円に戻せば、今日この瞬間に盾の28%が完成します。円転コストは約144円（0.17%）。</p>
   </div>
 </section>
 
@@ -208,42 +213,42 @@
     <caption>一 の威力：入金額だけを変えた場合（20年後・年8%・現金30万円込み）</caption>
     <thead><tr><th class="num">月の入金</th><th class="num">20年後</th><th class="num">月2万との差</th></tr></thead>
     <tbody>
-      <tr class="mark"><td class="num">20,000円</td><td class="num">1,291万円</td><td class="num miss">—</td></tr>
-      <tr><td class="num">30,000円</td><td class="num hit">1,810万円</td><td class="num hit">+519万円</td></tr>
-      <tr><td class="num">40,000円</td><td class="num hit">2,329万円</td><td class="num hit">+1,038万円</td></tr>
-      <tr><td class="num">50,000円</td><td class="num hit">2,848万円</td><td class="num hit">+1,557万円</td></tr>
+      <tr class="mark"><td class="num">20,000円</td><td class="num">1,352万円</td><td class="num miss">—</td></tr>
+      <tr><td class="num">30,000円</td><td class="num hit">1,889万円</td><td class="num hit">+537万円</td></tr>
+      <tr><td class="num">40,000円</td><td class="num hit">2,426万円</td><td class="num hit">+1,074万円</td></tr>
+      <tr><td class="num">50,000円</td><td class="num hit">2,963万円</td><td class="num hit">+1,611万円</td></tr>
     </tbody>
   </table>
   </div>
-  <p><em>月1万円多く入れるだけで、20年後に519万円。</em>これは銘柄選びで稼げる額ではありません。節約と副業で、確実に手に入る額です。</p>
+  <p><em>月1万円多く入れるだけで、20年後に537万円。</em>これは銘柄選びで稼げる額ではありません。節約と副業で、確実に手に入る額です。</p>
 </section>
 
 <!-- フェーズ1 -->
 <section>
   <h2><span class="n">03</span>フェーズ1 ── 盾をつくる</h2>
-  <p class="sub">最初の15ヶ月は、投資をしません。月20,000円は全額、現金に回します。遠すぎる目標は人をやめさせるので、3つの中間地点に区切ります。</p>
+  <p class="sub">最初の11ヶ月は、新規の投資をしません。米ドル預り金を円に戻し、そこへ月20,000円を積み上げます。遠すぎる目標は人をやめさせるので、中間地点に区切ります。</p>
 
   <div class="track">
-    <div class="ms"><div class="when">今週</div><div class="what">流出を止める</div>
-      <div class="note">SBIの積立（月10,000円・毎月21日・課税口座）を解除。PayPay全世界バランスのつみたても停止。<strong>ここを止めて初めて、月20,000円が現金に向かいます。</strong></div></div>
-    <div class="ms"><div class="when">5ヶ月後</div><div class="what">現金 100,000円</div>
-      <div class="note">生活費の0.5ヶ月分。家電の故障や急な医療費は、もうこれで払えます。</div></div>
-    <div class="ms"><div class="when">10ヶ月後</div><div class="what">現金 200,000円</div>
+    <div class="ms"><div class="when">今週 ①</div><div class="what">米ドル預り金を円に戻す → 現金 83,542円</div>
+      <div class="note">SBIで米ドルを円転し、銀行口座へ出金。<strong>これだけで盾の28%が今日完成します。</strong>証券口座に置いたままにしないこと。</div></div>
+    <div class="ms"><div class="when">今週 ②</div><div class="what">流出を止める</div>
+      <div class="note">SBIの積立（月10,000円・毎月21日・<strong>課税口座</strong>）を解除。PayPay全世界バランスのつみたても停止。ここを止めて初めて、月20,000円が現金に向かいます。</div></div>
+    <div class="ms"><div class="when">6ヶ月後</div><div class="what">現金 200,000円</div>
       <div class="note">生活費の1ヶ月分。ここでPayPay ADSを保有し続けるか再判断します。</div></div>
-    <div class="ms goal"><div class="when">15ヶ月後</div><div class="what">現金 300,000円 ── 解禁</div>
+    <div class="ms goal"><div class="when">11ヶ月後</div><div class="what">現金 300,000円 ── 解禁</div>
       <div class="note">生活費1.5ヶ月分。<strong>この日から投資を再開します。</strong>カレンダーに書いてください。</div></div>
   </div>
 
   <div class="note-box">
     <span class="tag">この15ヶ月、投資が止まるわけではありません</span>
-    <p>すでに持っている452,538円は、その間も市場で働き続けます。年8%なら15ヶ月で約50万円に。<strong>止めるのは「新規の入金」だけです。</strong></p>
+    <p>円転後も投資に残る約504,633円は、その間も市場で働き続けます。<strong>止めるのは「新規の入金」だけです。</strong></p>
   </div>
 </section>
 
 <!-- フェーズ2 -->
 <section>
   <h2><span class="n">04</span>フェーズ2 ── 積み上げる</h2>
-  <p class="sub">15ヶ月後から、月20,000円をNISAで投資に回します。現金30万円はそのまま据え置き、手をつけません。</p>
+  <p class="sub">11ヶ月後から、月20,000円をNISAで投資に回します。現金30万円はそのまま据え置き、手をつけません。<strong>NISA口座はPayPay証券にあります</strong>（SBIで積み立てても非課税になりません）。SBIへ移すなら、2026年10月から2027年分の変更を申し込めます。</p>
 
   <div class="scroll">
   <table>
@@ -252,7 +257,7 @@
     <tbody>
       <tr><td>銘柄</td><td><strong>全世界株式インデックス（オール・カントリー）を1本だけ</strong></td></tr>
       <tr><td>理由</td><td>今の資産は<strong>100%が米国株・100%がドル建て</strong>。日本・欧州・新興国を足して、初めて本当の分散になる</td></tr>
-      <tr><td>口座</td><td><strong>必ずNISAのつみたて投資枠</strong>（課税口座では買わない）</td></tr>
+      <tr><td>口座</td><td><strong>必ずNISAのつみたて投資枠</strong>（年120万円が丸ごと未使用）。課税口座では買わない</td></tr>
       <tr><td>金額</td><td>月20,000円（年24万円。NISA枠120万円に対して余裕あり）</td></tr>
       <tr><td>本数</td><td><strong>1本。</strong>S&amp;P500を2本持って分散した気になる失敗は、もうしない</td></tr>
     </tbody>
@@ -260,40 +265,35 @@
   </div>
 
   <figure>
-    <svg viewBox="0 0 760 400" role="img" aria-label="現在の452,538円に、15ヶ月後から月2万円を積み立てた場合の資産推移。25年後は年5%で1,278万円、年8%で2,055万円、年10%で2,891万円。10年後の年8%は433万円。">
+    <svg viewBox="0 0 760 400" role="img" aria-label="円転後の投資資産504,633円に、11ヶ月後から月2万円を積み立てた場合の資産推移。25年後は年5%で1,322万円、年8%で2,147万円、年10%で3,040万円。20年後の年8%は1,352万円。">
       <g class="g-grid">
-        <line x1="64" y1="360" x2="640" y2="360"></line>
-        <line x1="64" y1="274.5" x2="640" y2="274.5"></line>
-        <line x1="64" y1="189" x2="640" y2="189"></line>
-        <line x1="64" y1="103.5" x2="640" y2="103.5"></line>
+        <line x1="64" y1="360" x2="640" y2="360"></line><line x1="64" y1="274.5" x2="640" y2="274.5"></line>
+        <line x1="64" y1="189" x2="640" y2="189"></line><line x1="64" y1="103.5" x2="640" y2="103.5"></line>
         <line x1="64" y1="18" x2="640" y2="18"></line>
       </g>
       <g class="g-ax" text-anchor="end">
-        <text x="54" y="364">0</text><text x="54" y="278.5">700</text>
-        <text x="54" y="193">1400</text><text x="54" y="107.5">2100</text><text x="54" y="22">2800</text>
+        <text x="54" y="364">0</text><text x="54" y="278.5">750</text>
+        <text x="54" y="193">1500</text><text x="54" y="107.5">2250</text><text x="54" y="22">3000</text>
       </g>
       <g class="g-ax" text-anchor="middle">
         <text x="64" y="382">0年</text><text x="179" y="382">5年</text><text x="294" y="382">10年</text>
         <text x="410" y="382">15年</text><text x="525" y="382">20年</text><text x="640" y="382">25年</text>
       </g>
       <text class="g-ax" x="64" y="9" text-anchor="start" style="font-size:10px">万円</text>
-
-      <line x1="93" y1="18" x2="93" y2="360" stroke="var(--shu)" stroke-width="1.2" stroke-dasharray="4 4"></line>
-      <text x="98" y="32" style="font-family:var(--mono); font-size:10.5px; fill:var(--shu)">← 15ヶ月は現金づくり</text>
-      <line x1="64" y1="237.9" x2="640" y2="237.9" stroke="var(--ai)" stroke-width="1.2" stroke-dasharray="5 4"></line>
-      <text x="68" y="232" style="font-family:var(--mono); font-size:10.5px; fill:var(--ai)">1,000万円</text>
-
-      <polyline class="g-line" stroke="#4F7EA8" points="64,354.5 87,351.3 110,348 133,344.6 156,341 179,337.2 202,333.2 225,329 248,324.6 271,320 294,315.1 317,310 340,304.7 364,299 387,293.1 410,286.9 433,280.3 456,273.4 479,266.2 502,258.6 525,250.5 548,242.1 571,233.3 594,224 617,214.2 640,204"></polyline>
-      <polyline class="g-line" stroke="#1E3F73" points="64,354.5 87,351.1 110,347.6 133,343.8 156,339.7 179,335.3 202,330.5 225,325.4 248,319.8 271,313.7 294,307.1 317,300 340,292.2 364,283.9 387,274.8 410,265 433,254.4 456,242.9 479,230.4 502,216.9 525,202.3 548,186.5 571,169.4 594,150.8 617,130.7 640,109"></polyline>
-      <polyline class="g-line" stroke="#B93D28" points="64,354.5 87,351 110,347.3 133,343.3 156,338.9 179,334 202,328.6 225,322.6 248,316 271,308.7 294,300.6 317,291.7 340,281.9 364,271 387,259 410,245.7 433,231.1 456,214.9 479,197 502,177.3 525,155.5 548,131.4 571,104.7 594,75.3 617,42.8 640,6.9"></polyline>
-
+      <line x1="85" y1="18" x2="85" y2="360" stroke="var(--shu)" stroke-width="1.2" stroke-dasharray="4 4"></line>
+      <text x="90" y="32" style="font-family:var(--mono); font-size:10.5px; fill:var(--shu)">← 11ヶ月は現金づくり</text>
+      <line x1="64" y1="246" x2="640" y2="246" stroke="var(--ai)" stroke-width="1.2" stroke-dasharray="5 4"></line>
+      <text x="68" y="240" style="font-family:var(--mono); font-size:10.5px; fill:var(--ai)">1,000万円</text>
+      <polyline class="g-line" stroke="#4F7EA8" points="64,353.3 87,350.3 110,347.2 133,343.9 156,340.5 179,336.8 202,333 225,329 248,324.8 271,320.4 294,315.7 317,310.8 340,305.7 364,300.3 387,294.6 410,288.6 433,282.4 456,275.8 479,268.8 502,261.6 525,253.9 548,245.8 571,237.4 594,228.5 617,219.1 640,209.3"></polyline>
+      <polyline class="g-line" stroke="#1E3F73" points="64,353.3 87,350.1 110,346.7 133,343.1 156,339.1 179,334.8 202,330.2 225,325.2 248,319.7 271,313.8 294,307.4 317,300.5 340,293 364,284.9 387,276.1 410,266.6 433,256.3 456,245.2 479,233.1 502,220 525,205.8 548,190.5 571,173.8 594,155.8 617,136.3 640,115.2"></polyline>
+      <polyline class="g-line" stroke="#B93D28" points="64,353.3 87,350 110,346.4 133,342.5 156,338.2 179,333.4 202,328.1 225,322.2 248,315.8 271,308.6 294,300.8 317,292.1 340,282.4 364,271.8 387,260.1 410,247.1 433,232.8 456,216.9 479,199.4 502,180.1 525,158.8 548,135.2 571,109.2 594,80.4 617,48.6 640,13.5"></polyline>
       <g class="g-end">
-        <text x="648" y="10.9" fill="#B93D28">2891万</text><text x="648" y="23" fill="var(--muted)" style="font-size:10px">年10%</text>
-        <text x="648" y="113" fill="#1E3F73">2055万</text><text x="648" y="125" fill="var(--muted)" style="font-size:10px">年8%</text>
-        <text x="648" y="208" fill="#4F7EA8">1278万</text><text x="648" y="220" fill="var(--muted)" style="font-size:10px">年5%</text>
+        <text x="648" y="17.5" fill="#B93D28">3040万</text><text x="648" y="29.5" fill="var(--muted)" style="font-size:10px">年10%</text>
+        <text x="648" y="119.2" fill="#1E3F73">2147万</text><text x="648" y="131.2" fill="var(--muted)" style="font-size:10px">年8%</text>
+        <text x="648" y="213.3" fill="#4F7EA8">1322万</text><text x="648" y="225.3" fill="var(--muted)" style="font-size:10px">年5%</text>
       </g>
     </svg>
-    <figcaption>現在の452,538円 ＋ 15ヶ月後から月20,000円（現金30万円を含む合計）。<strong>年8%なら、1,000万円を超えるのは18年目あたり。</strong>手数料・税金は考慮していない単純計算で、実際の成績はこれより低くなります。マイナスの年も必ずあります。</figcaption>
+    <figcaption>米ドルを円転した後の投資資産504,633円 ＋ 11ヶ月後から月20,000円（現金30万円を含む合計）。<strong>年8%なら、1,000万円を超えるのは17年目あたり。</strong>手数料・税金は考慮していない単純計算で、実際の成績はこれより低くなります。マイナスの年も必ずあります。</figcaption>
   </figure>
 
   <div class="scroll">
@@ -301,9 +301,9 @@
     <caption>年ごとの見通し（現金30万円を含む）</caption>
     <thead><tr><th>利回り</th><th class="num">5年後</th><th class="num">10年後</th><th class="num">15年後</th><th class="num">20年後</th><th class="num">25年後</th></tr></thead>
     <tbody>
-      <tr><td>年5%</td><td class="num">187万</td><td class="num">367万</td><td class="num">599万</td><td class="num">896万</td><td class="num">1,278万</td></tr>
-      <tr class="mark"><td><strong>年8%</strong></td><td class="num">202万</td><td class="num">433万</td><td class="num">778万</td><td class="num hit">1,291万</td><td class="num hit">2,055万</td></tr>
-      <tr><td>年10%</td><td class="num">213万</td><td class="num">486万</td><td class="num">935万</td><td class="num">1,675万</td><td class="num">2,891万</td></tr>
+      <tr><td>年5%</td><td class="num">203万</td><td class="num">388万</td><td class="num">626万</td><td class="num">931万</td><td class="num">1,322万</td></tr>
+      <tr class="mark"><td><strong>年8%</strong></td><td class="num">221万</td><td class="num">461万</td><td class="num">819万</td><td class="num hit">1,352万</td><td class="num hit">2,147万</td></tr>
+      <tr><td>年10%</td><td class="num">233万</td><td class="num">520万</td><td class="num">990万</td><td class="num">1,765万</td><td class="num">3,040万</td></tr>
     </tbody>
   </table>
   </div>
@@ -329,13 +329,15 @@
   <h2><span class="n">06</span>今週やること</h2>
   <p class="sub">計画は、実行されて初めて計画になります。この3つが終わるまで、フェーズ1は始まっていません。</p>
   <div class="cl">
+    <label><input type="checkbox"><span><strong>米ドル預り金83,542円を円に戻し、銀行口座へ出金する</strong>。証券口座に置いたままにしない</span></label>
+    <label><input type="checkbox"><span><strong>SBIの「米国株式44,625円」と「外貨建債券7,522円」の中身を確認する</strong>。個別株なら集中リスクの再計算が必要</span></label>
     <label><input type="checkbox"><span><strong>SBIの積立を「解除」する</strong>（eMAXIS Slim S&amp;P500・月10,000円・毎月21日）。<strong>締切は9月21日。</strong>解除しても、保有している322,858円は売られません</span></label>
     <label><input type="checkbox"><span><strong>PayPay証券「全世界バランス」のつみたてを停止</strong>する。保有26,496円はそのまま持ち続ける</span></label>
     <label><input type="checkbox"><span><strong>PayPay ADSの保有ルールを紙に書く</strong> ── 保有する理由／損切りライン（推奨：取得単価2,577円を割ったら売る）／上限（総資産の30%）／再判断の日（10ヶ月後）</span></label>
     <label><input type="checkbox"><span><strong>現金を置く口座を決める</strong>。投資に使わない銀行口座。証券口座に置くと、必ず使ってしまいます</span></label>
-    <label><input type="checkbox"><span><strong>固定費を洗い出す</strong>。スマホ・保険・サブスク。月1万円削れれば、20年後に519万円変わります</span></label>
+    <label><input type="checkbox"><span><strong>固定費を洗い出す</strong>。スマホ・保険・サブスク。月1万円削れれば、20年後に537万円変わります</span></label>
     <div class="cl-foot">
-      <span class="st" id="st">0 / 5</span>
+      <span class="st" id="st">0 / 7</span>
       <button type="button" id="rs">チェックをリセット</button>
     </div>
   </div>
@@ -343,12 +345,13 @@
 
 <footer>
   <p class="pull">早く増やそうとすると、必ず失う。<br>ゆっくり増やそうとすると、意外と早く増える。</p>
-  <p>あなたはすでに452,538円を持ち、含み益+51.6%を売らずに持ち続けています。<strong>それは投資でいちばん難しい能力です。</strong>足りないのは才能ではなく、盾だけ。15ヶ月で作りましょう。</p>
+  <p>あなたはすでに588,175円を持ち、含み益+32%を売らずに持ち続けています。<strong>それは投資でいちばん難しい能力です。</strong>足りないのは才能ではなく、盾だけ。米ドルを円に戻せば今日28%が完成し、残りは11ヶ月です。</p>
   <ul class="fine" style="margin-top:22px; padding-left:1.2em">
     <li>これは学習用の個人メモであり、投資助言ではありません。最終的な判断はご自身で行ってください。</li>
     <li>金額はすべて手数料・税金を考慮しない単純計算です。年5〜10%の利回りは保証されたものではなく、マイナスの年も当然あります。</li>
     <li>NISA等の制度、各社の手数料・サービス内容は変わります。必ず公式サイトで最新をご確認ください。</li>
-    <li>前提：入金 月20,000円（講座の支払いは完了済みとして計算）。生活費 月200,000円。2026年9月時点の残高に基づく。</li>
+    <li>前提：入金 月20,000円（講座の支払いは完了済みとして計算）。生活費 月200,000円。2026年9月7日時点の全口座残高（SBI 458,545円＋PayPay証券 129,630円）に基づく。米ドル預り金83,542円は円転して現金に振り替える前提。</li>
+    <li>SBIの「米国株式 44,625円」「外貨建債券 7,522円」は中身が未確認のため、リスク評価に反映していません。</li>
   </ul>
 </footer>
 
