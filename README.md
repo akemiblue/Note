@@ -89,6 +89,7 @@
 | 6 | [docs/06-rules-checklist.md](docs/06-rules-checklist.md) | 自分の売買ルールの作り方／毎回使うチェックリスト |
 | 7 | [docs/07-glossary.md](docs/07-glossary.md) | **用語辞典** ― インデックス・レバレッジなど、全部やさしい言葉で |
 | 8 | [docs/08-kouza-review.md](docs/08-kouza-review.md) | 受講中の投資講座の**変換表** ― 何を採用し、何を上書きするか |
+| 9 | [docs/09-daily-routine.md](docs/09-daily-routine.md) | **毎日のルーティン** ― 見る7項目、経済指標、1行メモ |
 
 ---
 
